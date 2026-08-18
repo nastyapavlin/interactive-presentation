@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sell BHPH Notes at Auction | Debexpert</title>
+<meta name="description" content="Sell your BHPH (Buy Here Pay Here) auto notes to 500+ verified buyers through competitive auctions. Free for sellers. Deals close in 14 days on average.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#2563EB;
+    --blue-dark:#1D4ED8;
+    --blue-light:#EFF6FF;
+    --blue-soft:#E8F0FF;
+    --navy:#0F172A;
+    --slate:#475569;
+    --slate-light:#94A3B8;
+    --bg:#F8FAFC;
+    --white:#FFFFFF;
+    --amber:#D97706;
+    --amber-bg:#FFFBEB;
+    --red:#FF3333;
+    --border:#E5E7EB;
+    --shadow:0 1px 3px rgba(15,23,42,.06),0 8px 24px rgba(15,23,42,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--navy);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%}
+  .container{max-width:1140px;margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .nav-logo img{width:140px;height:auto;display:block}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{color:var(--slate);text-decoration:none;font-size:15px;font-weight:500;transition:color .15s}
+  .nav-links a:hover{color:var(--navy)}
+  .btn{display:inline-block;padding:11px 22px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;transition:all .15s;cursor:pointer;border:none}
+  .btn-primary{background:var(--blue);color:#fff}
+  .btn-primary:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 6px 16px rgba(37,99,235,.3)}
+  .btn-outline{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
+  .btn-outline:hover{background:var(--blue-light)}
+  .btn-lg{padding:15px 32px;font-size:16px}
+  .btn-white{background:#fff;color:var(--blue)}
+  .btn-white:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.2)}
+
+  /* Hero */
+  .hero{background:linear-gradient(180deg,var(--blue-light) 0%,var(--white) 100%);padding:80px 0 64px;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .badge{display:inline-block;background:var(--blue-soft);color:var(--blue);font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:20px;letter-spacing:.02em}
+  .hero h1{font-size:46px;line-height:1.15;font-weight:800;letter-spacing:-.02em;margin-bottom:20px}
+  .hero h1 span{color:var(--blue)}
+  .hero p.lead{font-size:19px;color:var(--slate);margin-bottom:32px;max-width:520px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+  .hero-note{font-size:14px;color:var(--slate-light)}
+  .hero-note strong{color:var(--amber)}
+  .hero-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:32px;border:1px solid var(--border)}
+  .hero-card h3{font-size:17px;font-weight:700;margin-bottom:18px}
+  .auction-row{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-radius:10px;margin-bottom:10px;background:var(--bg);font-size:14px}
+  .auction-row.win{background:var(--blue-light);border:1.5px solid var(--blue)}
+  .auction-row .bidder{font-weight:600}
+  .auction-row .bid{font-weight:700;color:var(--navy)}
+  .auction-row.win .bid{color:var(--blue)}
+  .auction-tag{font-size:11px;font-weight:700;background:var(--blue);color:#fff;padding:3px 9px;border-radius:999px;margin-left:8px}
+  .hero-card .timer{text-align:center;font-size:13px;color:var(--slate);margin-top:16px}
+  .hero-card .timer strong{color:var(--red)}
+
+  /* Stats */
+  .stats{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--white)}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:36px 0}
+  .stat h3{font-size:36px;font-weight:800;color:var(--blue);letter-spacing:-.02em}
+  .stat p{font-size:14px;color:var(--slate);font-weight:500}
+
+  /* Sections */
+  section{padding:80px 0}
+  .section-label{text-transform:uppercase;font-size:13px;font-weight:700;color:var(--blue);letter-spacing:.08em;margin-bottom:12px}
+  h2.section-title{font-size:34px;font-weight:800;letter-spacing:-.02em;margin-bottom:14px;line-height:1.2}
+  p.section-sub{font-size:17px;color:var(--slate);max-width:640px;margin-bottom:48px}
+  .center{text-align:center}
+  .center p.section-sub{margin-left:auto;margin-right:auto}
+
+  /* Benefits */
+  .benefits{background:var(--bg)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{background:#fff;border-radius:14px;padding:30px;border:1px solid var(--border);transition:all .2s}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card .icon{width:48px;height:48px;border-radius:12px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:22px}
+  .card h3{font-size:18px;font-weight:700;margin-bottom:10px}
+  .card p{font-size:15px;color:var(--slate)}
+
+  /* Account types */
+  .types-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .type-card{border:1px solid var(--border);border-radius:14px;padding:26px;background:#fff}
+  .type-card h4{font-size:16px;font-weight:700;margin-bottom:8px}
+  .type-card .price{font-size:22px;font-weight:800;color:var(--blue);margin-bottom:6px}
+  .type-card p{font-size:13.5px;color:var(--slate)}
+  .type-card .pill{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:14px}
+  .pill-green{background:#F0FDF4;color:#15803D}
+  .pill-amber{background:var(--amber-bg);color:var(--amber)}
+
+  /* Process */
+  .process{background:var(--navy);color:#fff}
+  .process .section-label{color:#93C5FD}
+  .process h2{color:#fff}
+  .process p.section-sub{color:#94A3B8}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:32px}
+  .step .num{width:40px;height:40px;border-radius:999px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;margin-bottom:18px}
+  .step h3{font-size:18px;font-weight:700;margin-bottom:10px}
+  .step p{font-size:15px;color:#CBD5E1}
+
+  /* Testimonial */
+  .quote-card{background:var(--blue-light);border-radius:16px;padding:44px;max-width:780px;margin:0 auto;text-align:center}
+  .quote-card .stars{color:#F59E0B;font-size:20px;letter-spacing:3px;margin-bottom:16px}
+  .quote-card blockquote{font-size:19px;font-weight:500;line-height:1.55;margin-bottom:18px}
+  .quote-card cite{font-style:normal;font-size:14px;color:var(--slate);font-weight:600}
+  .rating-line{text-align:center;margin-top:22px;font-size:14px;color:var(--slate)}
+  .rating-line strong{color:var(--navy)}
+
+  /* CTA */
+  .cta{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);color:#fff;text-align:center;border-radius:20px;padding:64px 40px;margin:0 24px}
+  .cta h2{font-size:32px;font-weight:800;margin-bottom:14px;letter-spacing:-.02em}
+  .cta p{font-size:17px;color:#DBEAFE;margin-bottom:30px;max-width:560px;margin-left:auto;margin-right:auto}
+
+  /* Footer */
+  footer{background:var(--navy);color:#94A3B8;padding:52px 0 32px;margin-top:80px}
+  .footer-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px}
+  .footer-brand img{width:150px;filter:brightness(0) invert(1);opacity:.9;margin-bottom:14px}
+  .footer-brand p{font-size:14px;max-width:280px}
+  .footer-col h4{color:#fff;font-size:14px;font-weight:700;margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em}
+  .footer-col a{display:block;color:#94A3B8;text-decoration:none;font-size:14px;margin-bottom:9px}
+  .footer-col a:hover{color:#fff}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero h1{font-size:34px}
+    .cards,.steps{grid-template-columns:1fr}
+    .types-grid{grid-template-columns:repeat(2,1fr)}
+    .stats-grid{grid-template-columns:repeat(2,1fr);gap:24px 0}
+    .nav-links{display:none}
+  }
+  @media(max-width:560px){
+    .types-grid{grid-template-columns:1fr}
+    section{padding:56px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="nav-logo" href="https://debexpert.com"><img src="data:image/svg+xml;base64,PHN2ZyBpZD0i0KHQu9C+0LlfMSIgZGF0YS1uYW1lPSLQodC70L7QuSAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNTEuOTUgMzYuODkiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZjMzO30uY2xzLTJ7ZmlsbDojY2MxMjEyO30uY2xzLTN7aXNvbGF0aW9uOmlzb2xhdGU7b3BhY2l0eTowLjI7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGQ9Ik00Ny40MSwyNS42QTYuMzgsNi4zOCwwLDAsMSw0MSwxOS4yYTYuMzgsNi4zOCwwLDAsMSw2LjQtNi40MSw2LjQ3LDYuNDcsMCwwLDEsMy44NywxLjI5VjYuMzVoMi41N1YyNS42N0g1Mi41NmwtMS4yOC0xLjI5QTYuNzYsNi43NiwwLDAsMSw0Ny40MSwyNS42Wm0wLTIuNTdhMy44NywzLjg3LDAsMCwwLDIuNzQtNi42LDMuODcsMy44NywwLDAsMC01LjQ3LDUuNDdBMy44MSwzLjgxLDAsMCwwLDQ3LjQxLDIzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuMiAtMC43MikiLz48cGF0aCBkPSJNNjQuNTcsMjEuOWwxLjgzLDEuODNBNi40MSw2LjQxLDAsMCwxLDU1LjQ2LDE5LjJhNi40Miw2LjQyLDAsMSwxLDEyLjcxLDEuMjhoLTEwYTMuOTIsMy45MiwwLDAsMCwzLjY3LDIuNThBMy45LDMuOSwwLDAsMCw2NC41NywyMS45Wk01OS4xLDE2LjQzYTQuNjksNC42OSwwLDAsMC0uOTQsMS40NWg3LjMxYTMuNjcsMy42NywwLDAsMC0uOTMtMS40NSwzLjg0LDMuODQsMCwwLDAtNS40NCwwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuMiAtMC43MikiLz48cGF0aCBkPSJNNjkuODUsMjUuNlY2LjI5aDIuNTdWMTRhNi41Myw2LjUzLDAsMCwxLDMuODctMS4yOCw2LjM3LDYuMzcsMCwwLDEsNi40LDYuNCw2LjM4LDYuMzgsMCwwLDEtNi40LDYuNDEsNi4zNCw2LjM0LDAsMCwxLTMuODctMS4yOWwtMS4yOCwxLjI5SDY5Ljg1Wm02LjQ0LTEwLjNhMy44NywzLjg3LDAsMCwwLTIuNzQsNi42QTMuODcsMy44NywwLDAsMCw3OSwxNi40MywzLjc2LDMuNzYsMCwwLDAsNzYuMjksMTUuM1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjIgLTAuNzIpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNOTMuNDQsMjEuOWwxLjg0LDEuODNhNi4xOSw2LjE5LDAsMCwxLTQuNTcsMS44Nyw2LjM4LDYuMzgsMCwwLDEtNi40MS02LjQsNi4zOCw2LjM4LDAsMCwxLDYuNDEtNi40MSw2LjI4LDYuMjgsMCwwLDEsNC41NywxLjg3LDYuMTcsNi4xNywwLDAsMSwxLjc3LDUuODJoLTEwYTMuODMsMy44MywwLDAsMCw2LjM3LDEuNDJaTTg4LDE2LjQzQTQuNDksNC40OSwwLDAsMCw4NywxNy44OGg3LjNhMy42NywzLjY3LDAsMCwwLS45My0xLjQ1LDMuNzcsMy43NywwLDAsMC0yLjc0LTEuMTNBMy42OSwzLjY5LDAsMCwwLDg4LDE2LjQzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuMiAtMC43MikiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMDAuNjIsMTIuNzNsMi4yNSwzLjg5LDIuMjItMy44OUgxMDhsLTMuNjcsNi40M0wxMDgsMjUuNmgtMi45M2wtMi4yMi0zLjg2LTIuMjIsMy44NmgtM2wzLjctNi40NC0zLjY3LTYuNDNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC4yIC0wLjcyKSIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTExNiwxMi43M2E2LjM3LDYuMzcsMCwwLDEsNi40MSw2LjRBNi4zOCw2LjM4LDAsMCwxLDExNiwyNS41NGE2LjQ3LDYuNDcsMCwwLDEtMy44Ni0xLjI5VjMyaC0yLjU3VjEyLjY2aDEuMjhMMTEyLjE0LDE0QTYuNzUsNi43NSwwLDAsMSwxMTYsMTIuNzNabTAsMi41N2EzLjg3LDMuODcsMCwwLDAtMi43Myw2LjYsMy44NywzLjg3LDAsMCwwLDUuNDctNS40N0EzLjc3LDMuNzcsMCwwLDAsMTE2LDE1LjNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC4yIC0wLjcyKSIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTEzMy4xNiwyMS45LDEzNSwyMy43M2E2LjQxLDYuNDEsMCwwLDEtMTAuOTQtNC41Myw2LjQyLDYuNDIsMCwxLDEsMTIuNzEsMS4yOGgtMTBhMy45MiwzLjkyLDAsMCwwLDMuNjcsMi41OEEzLjcyLDMuNzIsMCwwLDAsMTMzLjE2LDIxLjlabS01LjQ3LTUuNDdhNC42OSw0LjY5LDAsMCwwLS45NCwxLjQ1aDcuMzFhMy42NywzLjY3LDAsMCwwLS45My0xLjQ1LDMuNzgsMy43OCwwLDAsMC0yLjc0LTEuMTNBMy42OSwzLjY5LDAsMCwwLDEyNy42OSwxNi40M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjIgLTAuNzIpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTQwLjA1LDEyLjczLDE0MS4zMywxNGE2LjUzLDYuNTMsMCwwLDEsMy44Ny0xLjI4VjE1LjNhMy44NiwzLjg2LDAsMCwwLTMuODcsMy44NlYyNS42aC0yLjU3VjEyLjczWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuMiAtMC43MikiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNTEuODYsMTIuNzNWMTUuM2gtMi41OHY0LjhhMi45LDIuOSwwLDAsMCwuODQsMi4wNiwyLjY5LDIuNjksMCwwLDAsMiwuODN2Mi41OGE1LjUsNS41LDAsMCwxLTUuNDctNS41VjYuMjloMi41N3Y2LjQ0WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuMiAtMC43MikiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0xNy41MSwzNy42MWgtMTJMLjM5LDI4LjA1SDE3LjUxYzYsMCw3LjUtNS44Myw3LjUtOC44OXMtMS41NC04Ljg1LTcuNS04Ljg1SC4yM0w1LjQ4LjcyaDEyQzI3LjY4LjcyLDM0LjM1LDksMzQuMzUsMTkuMTZTMjcuNjgsMzcuNjEsMTcuNTEsMzcuNjFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC4yIC0wLjcyKSIvPjxwb2x5bGluZSBjbGFzcz0iY2xzLTMiIHBvaW50cz0iMCAyNy4zMyA1LjEyIDM2Ljg5IDUuMTIgMzYuODkgMTMuODEgMjcuMzMiLz48cG9seWxpbmUgY2xhc3M9ImNscy0zIiBwb2ludHM9IjEzLjgxIDkuNTkgNS4xMiAwIDUuMTIgMCAwLjE5IDkuNTkiLz48cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNS4yNSAwIDAuMDMgOS41OSA0LjQ0IDE4LjQ0IDAgMjcuMzMgNS4yOCAzNi43OSAxNC40MiAxOC40NCA1LjI1IDAiLz48L3N2Zz4=" alt="Debexpert"></a>
+    <nav class="nav-links">
+      <a href="#benefits">Why Debexpert</a>
+      <a href="#accounts">Account Types</a>
+      <a href="#process">How It Works</a>
+      <a href="#reviews">Reviews</a>
+    </nav>
+    <a class="btn btn-primary" href="https://debexpert.com/contact">Get a Free Valuation</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="badge">For BHPH Dealers &amp; Auto Note Sellers</span>
+      <h1>Sell Your BHPH Accounts to <span>500+ Verified Buyers</span> — at Auction</h1>
+      <p class="lead">Stop negotiating with a single buyer. Debexpert puts your Buy Here Pay Here portfolio in front of a nationwide network of vetted investors who compete to give you the top bid.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href="https://debexpert.com/contact">Sell Your Portfolio</a>
+        <a class="btn btn-outline btn-lg" href="#process">See How It Works</a>
+      </div>
+      <p class="hero-note"><strong>100% free for sellers</strong> · No upfront costs · Avg. close in 14 days</p>
+    </div>
+    <div class="hero-card">
+      <h3>🔴 Live Auction — BHPH Performing Portfolio</h3>
+      <div class="auction-row"><span class="bidder">Buyer #218</span><span class="bid">$0.62 / dollar</span></div>
+      <div class="auction-row"><span class="bidder">Buyer #054</span><span class="bid">$0.67 / dollar</span></div>
+      <div class="auction-row win"><span class="bidder">Buyer #171<span class="auction-tag">TOP BID</span></span><span class="bid">$0.74 / dollar</span></div>
+      <div class="auction-row"><span class="bidder">Buyer #390</span><span class="bid">$0.69 / dollar</span></div>
+      <p class="timer">Auction closes in <strong>02:14:36</strong> · 12 buyers bidding</p>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="container stats-grid">
+    <div class="stat"><h3>500+</h3><p>Verified debt buyers</p></div>
+    <div class="stat"><h3>$2.5B</h3><p>Portfolios auctioned</p></div>
+    <div class="stat"><h3>14 days</h3><p>Average deal close</p></div>
+    <div class="stat"><h3>$0</h3><p>Seller fees</p></div>
+  </div>
+</div>
+
+<section class="benefits" id="benefits">
+  <div class="container">
+    <p class="section-label">Why BHPH dealers choose Debexpert</p>
+    <h2 class="section-title">Turn Your Notes Into Cash — Without Leaving Money on the Table</h2>
+    <p class="section-sub">A competitive auction consistently beats a one-on-one negotiation. Here is what you get when you sell your BHPH accounts through Debexpert.</p>
+    <div class="cards">
+      <div class="card"><div class="icon">🏆</div><h3>Competitive Bidding = Higher Price</h3><p>Multiple verified buyers bid on your portfolio simultaneously. Competition drives the price up — performing BHPH loans typically sell at 40–80 cents on the dollar.</p></div>
+      <div class="card"><div class="icon">💰</div><h3>Completely Free for Sellers</h3><p>No listing fees, no commissions, no upfront costs. You keep 100% of the winning bid. Debexpert is compensated by the buyer side.</p></div>
+      <div class="card"><div class="icon">⚡</div><h3>Cash in ~14 Days</h3><p>From listing to funding, the average deal closes in 14 days — freeing up capital to put more cars on your lot instead of waiting years for payments.</p></div>
+      <div class="card"><div class="icon">🛡️</div><h3>500+ Vetted, Verified Buyers</h3><p>Every buyer on the platform is verified and signs an NDA before seeing your data. Your customer information stays protected throughout the process.</p></div>
+      <div class="card"><div class="icon">🤝</div><h3>Expert Guidance at Every Step</h3><p>Our team helps you package and present your portfolio to maximize investor appeal — from data preparation to closing documents.</p></div>
+      <div class="card"><div class="icon">⚙️</div><h3>Flexible Deal Structures</h3><p>Recourse or non-recourse, servicing released or retained, full sale or partial — structure the transaction the way that fits your dealership.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="accounts">
+  <div class="container">
+    <p class="section-label">What you can sell</p>
+    <h2 class="section-title">We Auction Every Type of BHPH Account</h2>
+    <p class="section-sub">Whether your accounts are paying like clockwork or long charged-off, there is a buyer for them on Debexpert.</p>
+    <div class="types-grid">
+      <div class="type-card"><span class="pill pill-green">Performing</span><h4>Performing Loans</h4><div class="price">40–80¢</div><p>on the dollar, for current accounts with payment history and solid documentation.</p></div>
+      <div class="type-card"><span class="pill pill-amber">Non-performing</span><h4>Skip Accounts</h4><div class="price">5–20¢</div><p>on the dollar, depending on account age, state, and documentation quality.</p></div>
+      <div class="type-card"><span class="pill pill-amber">Non-performing</span><h4>Deficiency Claims</h4><div class="price">5–20¢</div><p>post-repossession balances that still carry real value at auction.</p></div>
+      <div class="type-card"><span class="pill pill-amber">Non-performing</span><h4>Bankruptcy Accounts</h4><div class="price">Bid-based</div><p>specialized buyers compete for Chapter 7 and Chapter 13 accounts.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="container">
+    <p class="section-label">How it works</p>
+    <h2 class="section-title">From First Call to Funded in Three Steps</h2>
+    <p class="section-sub">We handle the heavy lifting so you can keep running your dealership.</p>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Present Your Portfolio</h3><p>Our advisors help you prepare and package your account data to make the strongest possible impression on investors.</p></div>
+      <div class="step"><div class="num">2</div><h3>Reach Verified Buyers</h3><p>Your portfolio goes in front of our nationwide network of 500+ verified investors — under NDA, on your terms.</p></div>
+      <div class="step"><div class="num">3</div><h3>Auction &amp; Close</h3><p>Buyers bid against each other in a live auction. You pick the winning bid and close — on average within 14 days.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <p class="section-label center" style="text-align:center">What sellers say</p>
+    <h2 class="section-title center" style="text-align:center;margin-bottom:40px">Trusted by Dealers Nationwide</h2>
+    <div class="quote-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"The Debexpert team was professional and responsive from day one. They walked us through the whole process, brought serious buyers to the table, and the auction closed faster than we expected — at a better price than the direct offers we had."</blockquote>
+      <cite>— BHPH Dealer, Texas</cite>
+    </div>
+    <p class="rating-line">Rated <strong>4.9 / 5</strong> across 47 customer reviews</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="cta">
+      <h2>Find Out What Your Portfolio Is Worth</h2>
+      <p>Get a free, no-obligation valuation of your BHPH accounts. It takes one call — and selling costs you nothing.</p>
+      <a class="btn btn-white btn-lg" href="https://debexpert.com/contact">Get a Free Valuation</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="data:image/svg+xml;base64,PHN2ZyBpZD0i0KHQu9C+0LlfMSIgZGF0YS1uYW1lPSLQodC70L7QuSAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNTEuOTUgMzYuODkiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZjMzO30uY2xzLTJ7ZmlsbDojY2MxMjEyO30uY2xzLTN7aXNvbGF0aW9uOmlzb2xhdGU7b3BhY2l0eTowLjI7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGQ9Ik00Ny40MSwyNS42QTYuMzgsNi4zOCwwLDAsMSw0MSwxOS4yYTYuMzgsNi4zOCwwLDAsMSw2LjQtNi40MSw2LjQ3LDYuNDcsMCwwLDEsMy44NywxLjI5VjYuMzVoMi41N1YyNS42N0g1Mi41NmwtMS4yOC0xLjI5QTYuNzYsNi43NiwwLDAsMSw0Ny40MSwyNS42Wm0wLTIuNTdhMy44NywzLjg3LDAsMCwwLDIuNzQtNi42LDMuODcsMy44NywwLDAsMC01LjQ3LDUuNDdBMy44MSwzLjgxLDAsMCwwLDQ3LjQxLDIzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuMiAtMC43MikiLz48cGF0aCBkPSJNNjQuNTcsMjEuOWwxLjgzLDEuODNBNi40MSw2LjQxLDAsMCwxLDU1LjQ2LDE5LjJhNi40Miw2LjQyLDAsMSwxLDEyLjcxLDEuMjhoLTEwYTMuOTIsMy45MiwwLDAsMCwzLjY3LDIuNThBMy45LDMuOSwwLDAsMCw2NC41NywyMS45Wk01OS4xLDE2LjQzYTQuNjksNC42OSwwLDAsMC0uOTQsMS40NWg3LjMxYTMuNjcsMy42NywwLDAsMC0uOTMtMS40NSwzLjg0LDMuODQsMCwwLDAtNS40NCwwWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuMiAtMC43MikiLz48cGF0aCBkPSJNNjkuODUsMjUuNlY2LjI5aDIuNTdWMTRhNi41Myw2LjUzLDAsMCwxLDMuODctMS4yOCw2LjM3LDYuMzcsMCwwLDEsNi40LDYuNCw2LjM4LDYuMzgsMCwwLDEtNi40LDYuNDEsNi4zNCw2LjM0LDAsMCwxLTMuODctMS4yOWwtMS4yOCwxLjI5SDY5Ljg1Wm02LjQ0LTEwLjNhMy44NywzLjg3LDAsMCwwLTIuNzQsNi42QTMuODcsMy44NywwLDAsMCw3OSwxNi40MywzLjc2LDMuNzYsMCwwLDAsNzYuMjksMTUuM1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjIgLTAuNzIpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNOTMuNDQsMjEuOWwxLjg0LDEuODNhNi4xOSw2LjE5LDAsMCwxLTQuNTcsMS44Nyw2LjM4LDYuMzgsMCwwLDEtNi40MS02LjQsNi4zOCw2LjM4LDAsMCwxLDYuNDEtNi40MSw2LjI4LDYuMjgsMCwwLDEsNC41NywxLjg3LDYuMTcsNi4xNywwLDAsMSwxLjc3LDUuODJoLTEwYTMuODMsMy44MywwLDAsMCw2LjM3LDEuNDJaTTg4LDE2LjQzQTQuNDksNC40OSwwLDAsMCw4NywxNy44OGg3LjNhMy42NywzLjY3LDAsMCwwLS45My0xLjQ1LDMuNzcsMy43NywwLDAsMC0yLjc0LTEuMTNBMy42OSwzLjY5LDAsMCwwLDg4LDE2LjQzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuMiAtMC43MikiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMDAuNjIsMTIuNzNsMi4yNSwzLjg5LDIuMjItMy44OUgxMDhsLTMuNjcsNi40M0wxMDgsMjUuNmgtMi45M2wtMi4yMi0zLjg2LTIuMjIsMy44NmgtM2wzLjctNi40NC0zLjY3LTYuNDNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC4yIC0wLjcyKSIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTExNiwxMi43M2E2LjM3LDYuMzcsMCwwLDEsNi40MSw2LjRBNi4zOCw2LjM4LDAsMCwxLDExNiwyNS41NGE2LjQ3LDYuNDcsMCwwLDEtMy44Ni0xLjI5VjMyaC0yLjU3VjEyLjY2aDEuMjhMMTEyLjE0LDE0QTYuNzUsNi43NSwwLDAsMSwxMTYsMTIuNzNabTAsMi41N2EzLjg3LDMuODcsMCwwLDAtMi43Myw2LjYsMy44NywzLjg3LDAsMCwwLDUuNDctNS40N0EzLjc3LDMuNzcsMCwwLDAsMTE2LDE1LjNaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC4yIC0wLjcyKSIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTEzMy4xNiwyMS45LDEzNSwyMy43M2E2LjQxLDYuNDEsMCwwLDEtMTAuOTQtNC41Myw2LjQyLDYuNDIsMCwxLDEsMTIuNzEsMS4yOGgtMTBhMy45MiwzLjkyLDAsMCwwLDMuNjcsMi41OEEzLjcyLDMuNzIsMCwwLDAsMTMzLjE2LDIxLjlabS01LjQ3LTUuNDdhNC42OSw0LjY5LDAsMCwwLS45NCwxLjQ1aDcuMzFhMy42NywzLjY3LDAsMCwwLS45My0xLjQ1LDMuNzgsMy43OCwwLDAsMC0yLjc0LTEuMTNBMy42OSwzLjY5LDAsMCwwLDEyNy42OSwxNi40M1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0wLjIgLTAuNzIpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTQwLjA1LDEyLjczLDE0MS4zMywxNGE2LjUzLDYuNTMsMCwwLDEsMy44Ny0xLjI4VjE1LjNhMy44NiwzLjg2LDAsMCwwLTMuODcsMy44NlYyNS42aC0yLjU3VjEyLjczWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuMiAtMC43MikiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xNTEuODYsMTIuNzNWMTUuM2gtMi41OHY0LjhhMi45LDIuOSwwLDAsMCwuODQsMi4wNiwyLjY5LDIuNjksMCwwLDAsMiwuODN2Mi41OGE1LjUsNS41LDAsMCwxLTUuNDctNS41VjYuMjloMi41N3Y2LjQ0WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuMiAtMC43MikiLz48cGF0aCBjbGFzcz0iY2xzLTIiIGQ9Ik0xNy41MSwzNy42MWgtMTJMLjM5LDI4LjA1SDE3LjUxYzYsMCw3LjUtNS44Myw3LjUtOC44OXMtMS41NC04Ljg1LTcuNS04Ljg1SC4yM0w1LjQ4LjcyaDEyQzI3LjY4LjcyLDM0LjM1LDksMzQuMzUsMTkuMTZTMjcuNjgsMzcuNjEsMTcuNTEsMzcuNjFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC4yIC0wLjcyKSIvPjxwb2x5bGluZSBjbGFzcz0iY2xzLTMiIHBvaW50cz0iMCAyNy4zMyA1LjEyIDM2Ljg5IDUuMTIgMzYuODkgMTMuODEgMjcuMzMiLz48cG9seWxpbmUgY2xhc3M9ImNscy0zIiBwb2ludHM9IjEzLjgxIDkuNTkgNS4xMiAwIDUuMTIgMCAwLjE5IDkuNTkiLz48cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNS4yNSAwIDAuMDMgOS41OSA0LjQ0IDE4LjQ0IDAgMjcuMzMgNS4yOCAzNi43OSAxNC40MiAxOC40NCA1LjI1IDAiLz48L3N2Zz4=" alt="Debexpert">
+        <p>The online auction marketplace for debt portfolios. Connecting sellers with 500+ verified buyers nationwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>For Sellers</h4>
+        <a href="https://debexpert.com/bhph-accounts">Sell BHPH Accounts</a>
+        <a href="https://debexpert.com/debt-for-sale/car-loans">Sell Auto Notes</a>
+        <a href="https://debexpert.com/contact">Free Valuation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="https://debexpert.com/reviews">Reviews</a>
+        <a href="https://debexpert.com/faq">FAQ</a>
+        <a href="https://debexpert.com/blog">Blog</a>
+        <a href="https://debexpert.com/contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+13027039387">(302) 703-9387</a>
+        <a href="https://debexpert.com/contact">Delaware, USA</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Debexpert. All rights reserved.</span>
+      <span>RMAI Member · Secure &amp; NDA-protected transactions</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
