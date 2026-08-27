@@ -1,0 +1,32 @@
+{
+  "_comment": "Template for a client deck config. Copy to <client-slug>.json, fill every field. Missing optional fields fall back to segment defaults. Deck URL: deck/?client=<client-slug>",
+  "meta": {
+    "generatedAt": "ISO-8601 timestamp of generation",
+    "manager": { "name": "", "phone": "", "email": "" }
+  },
+  "client": {
+    "name": "Client company name",
+    "state": "Two-letter US state code, e.g. TX",
+    "city": "Optional city",
+    "segment": "BHPH | consumer | medical | mca | judgments | ...",
+    "segmentLabel": "Human-readable segment, e.g. 'Buy Here Pay Here dealer'",
+    "logoUrl": null,
+    "profile": [ { "title": "", "detail": "" } ],
+    "challenges": [ { "title": "", "detail": "" } ],
+    "industryInsights": [ { "fact": "", "source": "" } ],
+    "portfolio": { "faceValue": null, "accounts": null, "performingShare": null, "avgBalance": null }
+  },
+  "solutions": [ { "challengeRef": 0, "title": "", "detail": "" } ],
+  "data": {
+    "buyers": {
+      "asOf": "YYYY-MM-DD",
+      "total": 0,
+      "byType": [ { "type": "", "count": 0, "note": "" } ],
+      "byState": { "TX": 0 }
+    },
+    "pricing": {
+      "asOf": "YYYY-MM-DD",
+      "rows": [ { "assetClass": "", "performance": "Performing | Non-performing | Legal", "low": 0, "high": 0, "clientSegment": false } ]
+    }
+  }
+}

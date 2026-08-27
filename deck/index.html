@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debexpert — Portfolio Sale Proposal</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#2563EB; --blue-dark:#1D4ED8; --blue-light:#EFF6FF; --blue-soft:#DDE8FF;
+    --navy:#0F172A; --slate:#475569; --slate-light:#94A3B8;
+    --bg:#F8FAFC; --white:#FFF; --amber:#D97706; --green:#15803D; --green-bg:#F0FDF4;
+    --red:#FF3333; --border:#E5E7EB;
+    --shadow:0 1px 3px rgba(15,23,42,.06),0 8px 24px rgba(15,23,42,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;overflow:hidden}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--navy);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased}
+
+  /* Deck frame */
+  #deck{position:fixed;inset:0;bottom:56px;overflow:hidden}
+  .slide{position:absolute;inset:0;padding:56px 72px 40px;opacity:0;transform:translateX(60px);transition:opacity .45s ease,transform .45s ease;pointer-events:none;overflow:auto;background:var(--bg)}
+  .slide.active{opacity:1;transform:none;pointer-events:auto}
+  .slide.prev{transform:translateX(-60px)}
+  .slide-inner{max-width:1180px;margin:0 auto;height:100%;display:flex;flex-direction:column}
+  .kicker{text-transform:uppercase;font-size:13px;font-weight:700;color:var(--blue);letter-spacing:.09em;margin-bottom:10px}
+  h1.slide-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
+  p.slide-sub{font-size:clamp(14px,1.3vw,17px);color:var(--slate);max-width:760px;margin-bottom:28px}
+  .grow{flex:1;min-height:0}
+  .asof{font-size:12px;color:var(--slate-light);margin-top:14px}
+
+  /* Nav bar */
+  #navbar{position:fixed;left:0;right:0;bottom:0;height:56px;background:#fff;border-top:1px solid var(--border);display:flex;align-items:center;gap:18px;padding:0 24px;z-index:20}
+  #navbar .logo{height:26px;display:block}
+  #dots{display:flex;gap:7px;flex:1;justify-content:center;flex-wrap:wrap}
+  .dot{width:9px;height:9px;border-radius:99px;background:#D1D5DB;cursor:pointer;transition:all .25s;border:none;padding:0}
+  .dot.on{background:var(--blue);width:26px}
+  #counter{font-size:13px;color:var(--slate);font-variant-numeric:tabular-nums;min-width:52px;text-align:right}
+  .navbtn{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--navy);font-size:16px;cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center}
+  .navbtn:hover{background:var(--blue-light);border-color:var(--blue);color:var(--blue)}
+  #fsbtn{font-size:13px}
+  #progress{position:fixed;top:0;left:0;height:3px;background:var(--blue);z-index:30;transition:width .4s ease}
+
+  /* Cover */
+  .cover{background:linear-gradient(150deg,#0F172A 0%,#1E293B 55%,#1D3A8A 100%);color:#fff;display:flex}
+  .cover .slide-inner{justify-content:center;align-items:flex-start}
+  .cover .logo-big{height:44px;margin-bottom:48px;filter:brightness(0) invert(1)}
+  .cover .pre{font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:#93C5FD;font-weight:600;margin-bottom:16px}
+  .cover h1{font-size:clamp(34px,4.6vw,58px);font-weight:900;letter-spacing:-.02em;line-height:1.1;max-width:900px}
+  .cover h1 em{font-style:normal;color:#60A5FA}
+  .cover .meta-line{margin-top:36px;font-size:15px;color:#94A3B8}
+  .cover .meta-line strong{color:#fff;font-weight:600}
+
+  /* Cards / generic grids */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .pcard{background:#fff;border:1px solid var(--border);border-radius:13px;padding:20px 22px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .pcard h4{font-size:15px;font-weight:700;margin-bottom:6px}
+  .pcard p{font-size:13.5px;color:var(--slate)}
+  .chal{border-left:4px solid var(--amber);}
+  .chal .tag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--amber);text-transform:uppercase;margin-bottom:6px}
+  .sol{border-left:4px solid var(--blue)}
+  .sol .tag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+  .sol .ref{font-size:12px;color:var(--slate-light);margin-top:8px}
+  .insight{background:var(--blue-light);border:1px solid var(--blue-soft);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--slate);margin-top:14px}
+  .insight b{color:var(--navy)}
+  .insight .src{color:var(--slate-light);font-size:11.5px}
+
+  /* Slide 3 donut */
+  .buyers-wrap{display:grid;grid-template-columns:minmax(280px,420px) 1fr;gap:44px;align-items:center;height:100%}
+  #donut{width:100%;max-height:52vh}
+  .legend{display:flex;flex-direction:column;gap:8px}
+  .lg-row{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:10px;border:1px solid transparent;cursor:pointer;transition:all .15s;background:#fff;border:1px solid var(--border)}
+  .lg-row:hover,.lg-row.sel{border-color:var(--blue);background:var(--blue-light)}
+  .lg-dot{width:13px;height:13px;border-radius:4px;flex:none}
+  .lg-row .t{font-size:14.5px;font-weight:600;flex:1}
+  .lg-row .c{font-size:15px;font-weight:800;font-variant-numeric:tabular-nums}
+  #buyer-note{font-size:13.5px;color:var(--slate);background:#fff;border:1px dashed var(--border);border-radius:10px;padding:12px 16px;margin-top:12px;min-height:58px}
+  .donut-center{font-weight:900}
+
+  /* Slide 4 map */
+  .map-wrap{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:center;height:100%}
+  #usmap{width:100%;max-height:56vh}
+  .tile{rx:6px;stroke:#fff;stroke-width:2;cursor:default;transition:opacity .15s}
+  .tile-label{font-size:11px;font-weight:700;fill:#334155;pointer-events:none}
+  .tile-label.lt{fill:#fff}
+  .state-big{background:#fff;border:1px solid var(--border);border-radius:16px;padding:30px;box-shadow:var(--shadow)}
+  .state-big .num{font-size:clamp(44px,5vw,68px);font-weight:900;color:var(--blue);letter-spacing:-.03em;line-height:1}
+  .state-big .lbl{font-size:15px;color:var(--slate);margin-top:8px}
+  .state-big .sub{margin-top:18px;padding-top:16px;border-top:1px solid var(--border);font-size:13.5px;color:var(--slate)}
+  .state-big .sub b{color:var(--navy)}
+
+  /* Slide 5 pricing */
+  .price-table{display:flex;flex-direction:column;gap:9px}
+  .pr-row{display:grid;grid-template-columns:220px 110px 1fr 120px;gap:14px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:10px;padding:11px 16px;font-size:14px}
+  .pr-row.hl{border-color:var(--blue);background:var(--blue-light)}
+  .pr-row .ac{font-weight:700}
+  .pr-row .perf{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--slate-light)}
+  .pr-row.hl .perf{color:var(--blue)}
+  .bar-track{height:12px;background:var(--bg);border-radius:99px;position:relative;border:1px solid var(--border)}
+  .pr-row.hl .bar-track{background:#fff}
+  .bar-fill{position:absolute;top:0;bottom:0;border-radius:99px;background:#CBD5E1}
+  .pr-row.hl .bar-fill{background:linear-gradient(90deg,var(--blue),#60A5FA)}
+  .pr-row .rng{font-weight:800;text-align:right;font-variant-numeric:tabular-nums}
+  .pr-row.hl .rng{color:var(--blue)}
+  .yourseg{display:inline-block;font-size:10px;font-weight:800;background:var(--blue);color:#fff;border-radius:99px;padding:2px 8px;margin-left:8px;vertical-align:2px}
+
+  /* Slide 6 process (dark) */
+  .darkslide{background:var(--navy);color:#fff}
+  .darkslide .kicker{color:#93C5FD}
+  .darkslide h1.slide-title{color:#fff}
+  .darkslide p.slide-sub{color:#94A3B8}
+  .timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:12px}
+  .tstep{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:22px 18px;position:relative}
+  .tstep .day{font-size:11.5px;font-weight:800;color:#60A5FA;letter-spacing:.06em;text-transform:uppercase}
+  .tstep h4{font-size:16px;font-weight:700;margin:8px 0 8px;color:#fff}
+  .tstep p{font-size:13px;color:#CBD5E1}
+  .tstep .n{position:absolute;top:-14px;left:18px;width:28px;height:28px;border-radius:99px;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;border:3px solid var(--navy)}
+  .total-line{margin-top:26px;text-align:center;font-size:15px;color:#94A3B8}
+  .total-line b{color:#fff;font-size:17px}
+
+  /* Slide 7 lotting */
+  .lot-wrap{display:grid;grid-template-columns:340px 1fr;gap:36px;height:100%;align-items:start}
+  .controls{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .ctl{margin-bottom:18px}
+  .ctl label{display:flex;justify-content:space-between;font-size:13px;font-weight:600;color:var(--slate);margin-bottom:6px}
+  .ctl label output{color:var(--navy);font-weight:800;font-variant-numeric:tabular-nums}
+  input[type=range]{width:100%;accent-color:var(--blue);height:26px}
+  .lots{display:flex;flex-direction:column;gap:12px}
+  .lot{background:#fff;border:1px solid var(--border);border-left:5px solid var(--blue);border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:1fr auto;gap:4px 18px;align-items:center;animation:pop .3s ease}
+  .lot.np{border-left-color:var(--amber)}
+  .lot h4{font-size:15px;font-weight:800}
+  .lot .d{font-size:12.5px;color:var(--slate);grid-column:1}
+  .lot .money{font-size:17px;font-weight:800;color:var(--blue);text-align:right;font-variant-numeric:tabular-nums;grid-row:1/3;grid-column:2;align-self:center}
+  .lot.np .money{color:var(--amber)}
+  @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .total-card{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;border-radius:12px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;margin-top:4px}
+  .total-card .t{font-size:14px;font-weight:600;color:#DBEAFE}
+  .total-card .v{font-size:clamp(20px,2.2vw,28px);font-weight:900;font-variant-numeric:tabular-nums}
+  .hint{font-size:12px;color:var(--slate-light);margin-top:10px}
+
+  /* Slide 8 transparency */
+  .trans-wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:30px;height:100%;align-items:start}
+  .panel{background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+  .panel .phead{padding:13px 18px;border-bottom:1px solid var(--border);font-size:13.5px;font-weight:700;display:flex;align-items:center;gap:8px}
+  .live-dot{width:8px;height:8px;border-radius:99px;background:#22C55E;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}}
+  #feed{padding:10px 14px;display:flex;flex-direction:column;gap:8px;min-height:280px}
+  .ev{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border-radius:9px;background:var(--bg);font-size:13px;animation:pop .35s ease}
+  .ev .ic{width:28px;height:28px;border-radius:8px;flex:none;display:flex;align-items:center;justify-content:center;font-size:14px;background:var(--blue-light)}
+  .ev.bid .ic{background:#EFF6FF}.ev.dl .ic{background:#FFFBEB}.ev.q .ic{background:#F0FDF4}
+  .ev b{font-weight:700}
+  .ev .tm{margin-left:auto;font-size:11px;color:var(--slate-light);flex:none}
+  #chat{padding:14px;display:flex;flex-direction:column;gap:10px;min-height:280px}
+  .msg{max-width:85%;padding:10px 14px;border-radius:13px;font-size:13px;line-height:1.45}
+  .msg.them{background:var(--bg);border:1px solid var(--border);border-bottom-left-radius:4px;align-self:flex-start}
+  .msg.me{background:var(--blue);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+  .msg .who{font-size:10.5px;font-weight:700;color:var(--slate-light);margin-bottom:3px;text-transform:uppercase;letter-spacing:.04em}
+  .msg.me .who{color:#BFDBFE}
+  .typing{display:flex;gap:4px;padding:12px 16px;background:var(--bg);border:1px solid var(--border);border-radius:13px;border-bottom-left-radius:4px;align-self:flex-start}
+  .typing i{width:6px;height:6px;border-radius:99px;background:var(--slate-light);animation:blink 1.2s infinite}
+  .typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+
+  /* Slide 9 final */
+  .expect-wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:stretch;height:100%}
+  .exp-list{display:flex;flex-direction:column;gap:12px}
+  .exp{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+  .exp .ck{width:26px;height:26px;flex:none;border-radius:99px;background:var(--green-bg);color:var(--green);font-weight:900;display:flex;align-items:center;justify-content:center;font-size:14px}
+  .exp h4{font-size:15px;font-weight:700}
+  .exp p{font-size:13px;color:var(--slate)}
+  .zero-card{background:linear-gradient(150deg,var(--blue),var(--blue-dark));border-radius:18px;color:#fff;padding:36px;display:flex;flex-direction:column;justify-content:center;text-align:center;box-shadow:var(--shadow)}
+  .zero-card .z{font-size:clamp(56px,7vw,96px);font-weight:900;letter-spacing:-.04em;line-height:1}
+  .zero-card .zl{font-size:17px;font-weight:700;margin-top:6px}
+  .zero-card p{font-size:14px;color:#DBEAFE;margin-top:14px}
+  .zero-card .mgr{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.25);font-size:14px}
+  .zero-card .mgr b{display:block;font-size:16px}
+
+  /* Error screen */
+  #err{position:fixed;inset:0;background:var(--bg);z-index:40;display:none;align-items:center;justify-content:center;text-align:center;padding:30px}
+  #err .box{max-width:440px}
+  #err h2{font-size:22px;font-weight:800;margin:14px 0 8px}
+  #err p{font-size:14px;color:var(--slate)}
+
+  @media(max-width:900px){
+    .slide{padding:34px 22px 30px}
+    .grid2,.grid4,.buyers-wrap,.map-wrap,.lot-wrap,.trans-wrap,.expect-wrap{grid-template-columns:1fr;gap:18px}
+    .timeline{grid-template-columns:1fr 1fr}
+    .pr-row{grid-template-columns:1fr 90px;grid-auto-rows:auto}
+    .pr-row .bar-track{grid-column:1/3}
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="deck" aria-live="polite"></div>
+
+<div id="navbar">
+  <img class="logo" id="navlogo" src="assets/debexpert-logo.svg" alt="Debexpert">
+  <button class="navbtn" id="prevb" title="Previous slide">‹</button>
+  <div id="dots"></div>
+  <button class="navbtn" id="nextb" title="Next slide">›</button>
+  <span id="counter">1 / 10</span>
+  <button class="navbtn" id="fsbtn" title="Fullscreen (F)">⛶</button>
+</div>
+
+<div id="err"><div class="box">
+  <img src="assets/debexpert-logo.svg" alt="Debexpert" style="height:34px">
+  <h2>Presentation not found</h2>
+  <p id="errmsg">We couldn't load this presentation configuration. Please check the link or contact your Debexpert manager.</p>
+</div></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const fmtM = n => n >= 1e6 ? '$' + (n/1e6).toFixed(n%1e6?1:0) + 'M' : '$' + Math.round(n/1e3) + 'K';
+const fmtN = n => n.toLocaleString('en-US');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+const PALETTE = ['#2563EB','#60A5FA','#0EA5E9','#7C3AED','#0F766E','#94A3B8'];
+
+/* US tile-grid map layout: [col,row] */
+const TILES = {AK:[0,0],ME:[11,0],VT:[10,1],NH:[11,1],WA:[1,2],ID:[2,2],MT:[3,2],ND:[4,2],MN:[5,2],WI:[6,2],MI:[8,2],NY:[9,2],MA:[10,2],RI:[11,2],OR:[1,3],NV:[2,3],WY:[3,3],SD:[4,3],IA:[5,3],IL:[6,3],IN:[7,3],OH:[8,3],PA:[9,3],NJ:[10,3],CT:[11,3],CA:[1,4],UT:[2,4],CO:[3,4],NE:[4,4],MO:[5,4],KY:[6,4],WV:[7,4],VA:[8,4],MD:[9,4],DE:[10,4],AZ:[2,5],NM:[3,5],KS:[4,5],AR:[5,5],TN:[6,5],NC:[7,5],SC:[8,5],DC:[9,5],OK:[4,6],LA:[5,6],MS:[6,6],AL:[7,6],GA:[8,6],HI:[0,7],TX:[4,7],FL:[9,7]};
+const STATE_NAMES = {AL:'Alabama',AK:'Alaska',AZ:'Arizona',AR:'Arkansas',CA:'California',CO:'Colorado',CT:'Connecticut',DE:'Delaware',DC:'D.C.',FL:'Florida',GA:'Georgia',HI:'Hawaii',ID:'Idaho',IL:'Illinois',IN:'Indiana',IA:'Iowa',KS:'Kansas',KY:'Kentucky',LA:'Louisiana',ME:'Maine',MD:'Maryland',MA:'Massachusetts',MI:'Michigan',MN:'Minnesota',MS:'Mississippi',MO:'Missouri',MT:'Montana',NE:'Nebraska',NV:'Nevada',NH:'New Hampshire',NJ:'New Jersey',NM:'New Mexico',NY:'New York',NC:'North Carolina',ND:'North Dakota',OH:'Ohio',OK:'Oklahoma',OR:'Oregon',PA:'Pennsylvania',RI:'Rhode Island',SC:'South Carolina',SD:'South Dakota',TN:'Tennessee',TX:'Texas',UT:'Utah',VT:'Vermont',VA:'Virginia',WA:'Washington',WV:'West Virginia',WI:'Wisconsin',WY:'Wyoming'};
+
+let C = null; // config
+let cur = 0, slides = [];
+
+async function boot(){
+  const slug = (new URLSearchParams(location.search).get('client') || 'demo').replace(/[^a-z0-9-_]/gi,'');
+  try{
+    const r = await fetch('clients/' + slug + '.json', {cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    C = await r.json();
+  }catch(e){
+    $('#err').style.display = 'flex';
+    $('#errmsg').textContent = 'Configuration "' + slug + '" could not be loaded. Please check the link or contact your Debexpert manager.';
+    return;
+  }
+  document.title = 'Debexpert — Proposal for ' + C.client.name;
+  build();
+}
+
+function slideEl(cls, html){
+  const s = document.createElement('section');
+  s.className = 'slide ' + (cls||'');
+  s.innerHTML = '<div class="slide-inner">' + html + '</div>';
+  $('#deck').appendChild(s);
+  slides.push(s);
+  return s;
+}
+
+function build(){
+  const c = C.client, d = C.data;
+
+  /* 0 — Cover */
+  slideEl('cover', `
+    <img class="logo-big" src="assets/debexpert-logo.svg" alt="Debexpert">
+    <div class="pre">Portfolio Sale Proposal</div>
+    <h1>Prepared for <em>${esc(c.name)}</em></h1>
+    <div class="meta-line">${esc(c.city||'')}${c.city?', ':''}${esc(c.state)} · ${esc(c.segmentLabel||c.segment)}<br>
+    Presented by <strong>${esc(C.meta.manager.name)}</strong>, Debexpert · ${new Date(C.meta.generatedAt).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}</div>`);
+
+  /* 1 — Understanding */
+  slideEl('', `
+    <div class="kicker">01 · Our understanding of your business</div>
+    <h1 class="slide-title">What We Know About ${esc(c.name)}</h1>
+    <p class="slide-sub">Before talking about ourselves, here is our read on your business — and the challenges we believe you're facing. Tell us where we're wrong.</p>
+    <div class="grid2 grow" style="align-content:start">
+      ${c.profile.map(p=>`<div class="pcard"><h4>${esc(p.title)}</h4><p>${esc(p.detail)}</p></div>`).join('')}
+    </div>
+    <div class="grid2" style="margin-top:18px">
+      ${c.challenges.map(ch=>`<div class="pcard chal"><span class="tag">Challenge</span><h4>${esc(ch.title)}</h4><p>${esc(ch.detail)}</p></div>`).join('')}
+    </div>
+    ${(c.industryInsights||[]).length?`<div class="insight">📊 <b>Industry context:</b> ${c.industryInsights.map(i=>esc(i.fact)+' <span class="src">('+esc(i.source)+')</span>').join(' · ')}</div>`:''}`);
+
+  /* 2 — Solutions */
+  slideEl('', `
+    <div class="kicker">02 · How Debexpert solves this</div>
+    <h1 class="slide-title">Every Challenge Has an Auction-Shaped Answer</h1>
+    <p class="slide-sub">Debexpert runs competitive auctions for debt portfolios — free for sellers. Here is how that maps to your situation.</p>
+    <div class="grid2 grow" style="align-content:start">
+      ${C.solutions.map(s=>`<div class="pcard sol"><span class="tag">Solution</span><h4>${esc(s.title)}</h4><p>${esc(s.detail)}</p>
+        ${c.challenges[s.challengeRef]?`<div class="ref">↳ answers: “${esc(c.challenges[s.challengeRef].title)}”</div>`:''}</div>`).join('')}
+    </div>`);
+
+  /* 3 — Buyer network */
+  slideEl('', `
+    <div class="kicker">03 · Who is on the other side</div>
+    <h1 class="slide-title">${fmtN(d.buyers.total)} Verified Buyers, Six Distinct Groups</h1>
+    <p class="slide-sub">Different buyer types want different paper — that's what makes the auction competitive across your whole portfolio. Click a group to learn more.</p>
+    <div class="buyers-wrap grow">
+      <svg id="donut" viewBox="0 0 240 240"></svg>
+      <div>
+        <div class="legend" id="legend"></div>
+        <div id="buyer-note">👆 Select a buyer group to see who they are and what they bid on.</div>
+      </div>
+    </div>
+    <div class="asof">Live platform data as of ${esc(d.buyers.asOf)}</div>`);
+
+  /* 4 — State map */
+  const stCount = d.buyers.byState[c.state] || 0;
+  const top = Object.entries(d.buyers.byState).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([s,n])=>`${s} (${n})`).join(', ');
+  slideEl('', `
+    <div class="kicker">04 · Buyers in your state</div>
+    <h1 class="slide-title">${fmtN(stCount)} Buyers Actively Purchase ${esc(STATE_NAMES[c.state]||c.state)} Paper</h1>
+    <p class="slide-sub">Debt prices depend on state law and collectability — what matters is how many buyers compete for paper in <b>your</b> state.</p>
+    <div class="map-wrap grow">
+      <svg id="usmap" viewBox="0 0 620 420"></svg>
+      <div class="state-big">
+        <div class="num">${fmtN(stCount)}</div>
+        <div class="lbl">verified buyers bidding on ${esc(STATE_NAMES[c.state]||c.state)} portfolios</div>
+        <div class="sub">Most active states on the platform: <b>${esc(top)}</b>. Buyer counts shown are those who purchased or bid on paper in each state in the last 12 months.</div>
+      </div>
+    </div>
+    <div class="asof">Live platform data as of ${esc(d.buyers.asOf)}</div>`);
+
+  /* 5 — Pricing */
+  slideEl('', `
+    <div class="kicker">05 · Current market pricing</div>
+    <h1 class="slide-title">What Portfolios Sell For Right Now</h1>
+    <p class="slide-sub">Cents on the dollar of face value, based on recent Debexpert auctions. Your segment is highlighted.</p>
+    <div class="price-table grow" style="align-content:start">
+      ${d.pricing.rows.map(r=>`
+        <div class="pr-row ${r.clientSegment?'hl':''}">
+          <span class="ac">${esc(r.assetClass)}${r.clientSegment?'<span class="yourseg">YOUR SEGMENT</span>':''}</span>
+          <span class="perf">${esc(r.performance)}</span>
+          <span class="bar-track"><span class="bar-fill" style="left:${r.low}%;width:${r.high-r.low}%"></span></span>
+          <span class="rng">${r.low}–${r.high}¢</span>
+        </div>`).join('')}
+    </div>
+    <div class="asof">Pricing sheet as of ${esc(d.pricing.asOf)} · actual results depend on documentation quality, seasoning and state mix</div>`);
+
+  /* 6 — Process (dark) */
+  slideEl('darkslide', `
+    <div class="kicker">06 · The process</div>
+    <h1 class="slide-title">From Handshake to Funding in ~14 Days</h1>
+    <p class="slide-sub">You stay in control at every step — nothing is sold until you accept a bid.</p>
+    <div class="timeline grow" style="align-content:start;margin-top:24px">
+      <div class="tstep"><span class="n">1</span><div class="day">Days 0–1</div><h4>NDA & Data Room</h4><p>Buyers sign NDAs. We help you package the data tape so it presents at its best.</p></div>
+      <div class="tstep"><span class="n">2</span><div class="day">Days 1–5</div><h4>Listing & Marketing</h4><p>Your portfolio goes in front of matching verified buyers across the network.</p></div>
+      <div class="tstep"><span class="n">3</span><div class="day">Days 5–10</div><h4>Live Auction</h4><p>Buyers bid against each other. You watch every bid in real time.</p></div>
+      <div class="tstep"><span class="n">4</span><div class="day">Days 10–12</div><h4>Closing</h4><p>Purchase agreement signed — standard templates, reviewed by both sides.</p></div>
+      <div class="tstep"><span class="n">5</span><div class="day">Days 12–14</div><h4>Funding</h4><p>Wire hits your account. Files transfer to the buyer on confirmed payment.</p></div>
+    </div>
+    <div class="total-line">Average time from listing to funded wire across Debexpert auctions: <b>14 days</b></div>`);
+
+  /* 7 — Lotting */
+  const pf = c.portfolio||{};
+  slideEl('', `
+    <div class="kicker">07 · Lotting strategy</div>
+    <h1 class="slide-title">Let's Lot Your Portfolio — Live</h1>
+    <p class="slide-sub">The right split into lots widens the bidder pool and raises the total price. Adjust the numbers — this is your portfolio, roughly.</p>
+    <div class="lot-wrap grow">
+      <div class="controls">
+        <div class="ctl"><label>Portfolio face value <output id="o-face"></output></label>
+          <input type="range" id="r-face" min="500000" max="20000000" step="100000" value="${pf.faceValue||4000000}"></div>
+        <div class="ctl"><label>Number of accounts <output id="o-acc"></output></label>
+          <input type="range" id="r-acc" min="50" max="5000" step="10" value="${pf.accounts||600}"></div>
+        <div class="ctl"><label>Performing share <output id="o-perf"></output></label>
+          <input type="range" id="r-perf" min="0" max="100" step="1" value="${Math.round((pf.performingShare??0.7)*100)}"></div>
+        <div class="hint">Estimates use current market ranges from the pricing slide. Not a formal valuation.</div>
+      </div>
+      <div>
+        <div class="lots" id="lots"></div>
+        <div class="total-card"><span class="t">Estimated total proceeds</span><span class="v" id="tot"></span></div>
+      </div>
+    </div>`);
+
+  /* 8 — Transparency */
+  slideEl('', `
+    <div class="kicker">08 · Full transparency</div>
+    <h1 class="slide-title">You See Everything During Your Auction</h1>
+    <p class="slide-sub">No black box: your seller dashboard shows every bid, every data-tape download, and a direct chat with your Debexpert manager.</p>
+    <div class="trans-wrap grow">
+      <div class="panel"><div class="phead"><span class="live-dot"></span> Auction activity — your portfolio</div><div id="feed"></div></div>
+      <div class="panel"><div class="phead">💬 Chat with your manager</div><div id="chat">
+        <div class="msg them"><div class="who">${esc(C.meta.manager.name)} · Debexpert</div>Buyer #171 asked for a payment-history breakdown by vintage. I've uploaded it to the data room — bids usually move after that.</div>
+        <div class="msg me"><div class="who">You</div>Great. Can we extend the auction by one day?</div>
+        <div class="msg them"><div class="who">${esc(C.meta.manager.name)} · Debexpert</div>Done — closing moved to Thursday 3pm CT. Two more buyers are reviewing the tape right now.</div>
+        <div class="typing"><i></i><i></i><i></i></div>
+      </div></div>
+    </div>`);
+
+  /* 9 — Expectations / zero commission */
+  slideEl('', `
+    <div class="kicker">09 · What we expect from you</div>
+    <h1 class="slide-title">Our Only Ask: Stay Engaged for Two Weeks</h1>
+    <p class="slide-sub">An auction moves fast. Here's what we need from your side to get you the top bid.</p>
+    <div class="expect-wrap grow">
+      <div class="exp-list">
+        <div class="exp"><span class="ck">✓</span><div><h4>Be reachable during the auction</h4><p>Quick answers keep bidders warm — plan to be available (not on vacation) for the ~2 auction weeks.</p></div></div>
+        <div class="exp"><span class="ck">✓</span><div><h4>Send missing data promptly</h4><p>When buyers request extra fields or documents, same-day delivery keeps bids climbing.</p></div></div>
+        <div class="exp"><span class="ck">✓</span><div><h4>Answer buyer questions</h4><p>Questions come through us — you reply once, we relay to all interested buyers.</p></div></div>
+        <div class="exp"><span class="ck">✓</span><div><h4>Make the call on the final bid</h4><p>You accept or decline the winning bid. No obligation to sell if the price isn't right.</p></div></div>
+      </div>
+      <div class="zero-card">
+        <div class="z">$0</div>
+        <div class="zl">seller commission. Ever.</div>
+        <p>…and for all of this, Debexpert charges you nothing. Our fee comes from the buyer side.</p>
+        <div class="mgr"><b>${esc(C.meta.manager.name)}</b>${esc(C.meta.manager.phone)} · ${esc(C.meta.manager.email)}</div>
+      </div>
+    </div>`);
+
+  buildDots();
+  drawDonut();
+  drawMap();
+  initLotting();
+  initFeed();
+  go(0, true);
+}
+
+/* ---------- navigation ---------- */
+function buildDots(){
+  slides.forEach((_,i)=>{
+    const b=document.createElement('button');b.className='dot';b.title='Slide '+(i+1);
+    b.onclick=()=>go(i);$('#dots').appendChild(b);
+  });
+}
+function go(i, instant){
+  if(i<0||i>=slides.length)return;
+  cur=i;
+  slides.forEach((s,j)=>{s.classList.toggle('active',j===i);s.classList.toggle('prev',j<i);});
+  document.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===i));
+  $('#counter').textContent=(i+1)+' / '+slides.length;
+  $('#progress').style.width=((i+1)/slides.length*100)+'%';
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(cur+1);}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur-1);}
+  else if(e.key==='Home')go(0); else if(e.key==='End')go(slides.length-1);
+  else if(e.key==='f'||e.key==='F')toggleFS();
+});
+$('#prevb').onclick=()=>go(cur-1); $('#nextb').onclick=()=>go(cur+1);
+$('#fsbtn').onclick=toggleFS;
+function toggleFS(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}
+let tx=null;
+document.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+document.addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>60)go(cur+(dx<0?1:-1));tx=null;},{passive:true});
+
+/* ---------- slide 3: donut ---------- */
+function drawDonut(){
+  const data=C.data.buyers.byType, total=data.reduce((s,x)=>s+x.count,0);
+  const svg=$('#donut'); const cx=120,cy=120,R=95,r=60;
+  let a0=-Math.PI/2, parts='';
+  data.forEach((x,i)=>{
+    const a1=a0+2*Math.PI*x.count/total;
+    const large=(a1-a0)>Math.PI?1:0;
+    const p=(a,rad)=>`${cx+rad*Math.cos(a)},${cy+rad*Math.sin(a)}`;
+    parts+=`<path d="M${p(a0,R)} A${R},${R} 0 ${large} 1 ${p(a1,R)} L${p(a1,r)} A${r},${r} 0 ${large} 0 ${p(a0,r)} Z" fill="${PALETTE[i%PALETTE.length]}" data-i="${i}" style="cursor:pointer;transition:opacity .15s"><title>${esc(x.type)}: ${x.count}</title></path>`;
+    a0=a1;
+  });
+  svg.innerHTML=parts+`<text class="donut-center" x="${cx}" y="${cy-4}" text-anchor="middle" font-size="34" fill="#0F172A">${fmtN(total)}</text><text x="${cx}" y="${cy+20}" text-anchor="middle" font-size="11" fill="#64748B" font-weight="600">VERIFIED BUYERS</text>`;
+  const legend=$('#legend');
+  legend.innerHTML=data.map((x,i)=>`<div class="lg-row" data-i="${i}"><span class="lg-dot" style="background:${PALETTE[i%PALETTE.length]}"></span><span class="t">${esc(x.type)}</span><span class="c">${fmtN(x.count)}</span></div>`).join('');
+  const sel=i=>{
+    document.querySelectorAll('.lg-row').forEach(r=>r.classList.toggle('sel',+r.dataset.i===i));
+    svg.querySelectorAll('path').forEach(p=>p.style.opacity=(+p.dataset.i===i||i===null)?1:.3);
+    $('#buyer-note').innerHTML=i===null?'👆 Select a buyer group to see who they are and what they bid on.':`<b>${esc(data[i].type)}</b> — ${esc(data[i].note)}`;
+  };
+  legend.querySelectorAll('.lg-row').forEach(r=>r.onclick=()=>sel(+r.dataset.i));
+  svg.querySelectorAll('path').forEach(p=>p.onclick=()=>sel(+p.dataset.i));
+}
+
+/* ---------- slide 4: tile map ---------- */
+function drawMap(){
+  const by=C.data.buyers.byState, home=C.client.state;
+  const max=Math.max(...Object.values(by),1);
+  const CELL=48,GAP=4,X0=8,Y0=8;
+  let out='';
+  for(const [st,[col,row]] of Object.entries(TILES)){
+    const v=by[st]||0;
+    const t=v/max;
+    const isHome=st===home;
+    const fill=isHome?'#FF3333':(v===0?'#EDF1F7':`rgba(37,99,235,${0.15+0.85*t})`);
+    const dark=isHome||t>0.45;
+    const x=X0+col*(CELL+GAP), y=Y0+row*(CELL+GAP);
+    out+=`<g><rect class="tile" x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="8" fill="${fill}" ${isHome?'stroke="#0F172A" stroke-width="2.5"':''}><title>${esc(STATE_NAMES[st]||st)}: ${v} buyers</title></rect>
+      <text class="tile-label ${dark?'lt':''}" x="${x+CELL/2}" y="${y+CELL/2-3}" text-anchor="middle">${st}</text>
+      <text class="tile-label ${dark?'lt':''}" x="${x+CELL/2}" y="${y+CELL/2+13}" text-anchor="middle" style="font-size:10px;font-weight:600;opacity:.85">${v||''}</text></g>`;
+  }
+  $('#usmap').innerHTML=out;
+}
+
+/* ---------- slide 7: lotting ---------- */
+function initLotting(){
+  const pr=C.data.pricing.rows;
+  const perfR=pr.find(r=>r.clientSegment&&/perform/i.test(r.performance)&&!/non/i.test(r.performance))||{low:40,high:80};
+  const npRows=pr.filter(r=>r.clientSegment&&/non/i.test(r.performance));
+  const npR=npRows.length?{low:Math.min(...npRows.map(r=>r.low)),high:Math.max(...npRows.map(r=>r.high))}:{low:5,high:20};
+  const els={face:$('#r-face'),acc:$('#r-acc'),perf:$('#r-perf')};
+  const render=()=>{
+    const face=+els.face.value, acc=+els.acc.value, share=+els.perf.value/100;
+    $('#o-face').textContent=fmtM(face);
+    $('#o-acc').textContent=fmtN(acc);
+    $('#o-perf').textContent=Math.round(share*100)+'%';
+    const pFace=face*share, npFace=face-pFace;
+    const lots=[];
+    if(pFace>0){
+      if(pFace>3e6){
+        lots.push({np:false,name:'Lot 1 — Performing (tranche A)',face:pFace/2,acc:Math.round(acc*share/2),r:perfR,d:'Splitting performing paper into two tranches widens the bidder pool — smaller funds can compete too.'});
+        lots.push({np:false,name:'Lot 2 — Performing (tranche B)',face:pFace/2,acc:Math.round(acc*share/2),r:perfR,d:'Same profile as tranche A; separate auctions let buyers bid on both or either.'});
+      }else{
+        lots.push({np:false,name:'Lot 1 — Performing accounts',face:pFace,acc:Math.round(acc*share),r:perfR,d:'Current, paying accounts with payment history — the premium slice of your portfolio.'});
+      }
+    }
+    if(npFace>50000){
+      lots.push({np:true,name:'Lot '+(lots.length+1)+' — Skips, deficiencies & charge-offs',face:npFace,acc:acc-Math.round(acc*share),r:npR,d:'Specialist buyers (agencies, legal networks) bid on this paper — money you may have written off.'});
+    }
+    $('#lots').innerHTML=lots.map(l=>`<div class="lot ${l.np?'np':''}"><h4>${esc(l.name)}</h4><span class="money">${fmtM(l.face*l.r.low/100)} – ${fmtM(l.face*l.r.high/100)}</span><div class="d">${fmtM(l.face)} face · ~${fmtN(l.acc)} accounts · market ${l.r.low}–${l.r.high}¢/$ — ${esc(l.d)}</div></div>`).join('')||'<div class="hint">Move the sliders to model the portfolio.</div>';
+    const lo=lots.reduce((s,l)=>s+l.face*l.r.low/100,0), hi=lots.reduce((s,l)=>s+l.face*l.r.high/100,0);
+    $('#tot').textContent=fmtM(lo)+' – '+fmtM(hi);
+  };
+  Object.values(els).forEach(e=>e.addEventListener('input',render));
+  render();
+}
+
+/* ---------- slide 8: live feed ---------- */
+function initFeed(){
+  const EVENTS=[
+    {c:'bid',ic:'🔨',t:'<b>Buyer #171</b> placed a bid — <b>$0.74/$</b>'},
+    {c:'dl',ic:'📥',t:'<b>Buyer #054</b> downloaded the data tape'},
+    {c:'q',ic:'❓',t:'<b>Buyer #218</b> asked a question about vintage mix'},
+    {c:'bid',ic:'🔨',t:'<b>Buyer #390</b> placed a bid — <b>$0.69/$</b>'},
+    {c:'dl',ic:'📥',t:'<b>Buyer #027</b> signed the NDA & entered the data room'},
+    {c:'bid',ic:'🔨',t:'<b>Buyer #218</b> raised their bid — <b>$0.71/$</b>'},
+    {c:'dl',ic:'📥',t:'<b>Buyer #333</b> downloaded the data tape'},
+    {c:'q',ic:'❓',t:'<b>Buyer #171</b> requested payment histories by month'}
+  ];
+  const feed=$('#feed');let k=0;
+  const add=()=>{
+    const e=EVENTS[k++%EVENTS.length];
+    const el=document.createElement('div');
+    el.className='ev '+e.c;
+    el.innerHTML=`<span class="ic">${e.ic}</span><span>${e.t}</span><span class="tm">just now</span>`;
+    feed.prepend(el);
+    feed.querySelectorAll('.tm').forEach((t,i)=>{if(i>0)t.textContent=(i*2)+' min ago';});
+    while(feed.children.length>6)feed.lastChild.remove();
+  };
+  for(let i=0;i<5;i++)add();
+  setInterval(add,3500);
+}
+
+boot();
+</script>
+</body>
+</html>
