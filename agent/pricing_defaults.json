@@ -1,0 +1,13 @@
+{
+  "_comment": "Benchmark market ranges used for asset classes not yet present in the auctions sheet. Sheet-derived rows always override these (match by assetClass+performance). Review quarterly.",
+  "rows": [
+    { "assetClass": "Auto / BHPH notes", "performance": "Performing", "low": 40, "high": 80, "clientSegment": false },
+    { "assetClass": "Consumer installment", "performance": "Performing", "low": 30, "high": 65, "clientSegment": false },
+    { "assetClass": "MCA receivables", "performance": "Non-performing", "low": 8, "high": 25, "clientSegment": false },
+    { "assetClass": "Auto skip accounts", "performance": "Non-performing", "low": 5, "high": 20, "clientSegment": false },
+    { "assetClass": "Auto deficiency claims", "performance": "Non-performing", "low": 5, "high": 15, "clientSegment": false },
+    { "assetClass": "Judgment portfolios", "performance": "Legal", "low": 10, "high": 30, "clientSegment": false },
+    { "assetClass": "Credit card charge-offs", "performance": "Non-performing", "low": 4, "high": 14, "clientSegment": false },
+    { "assetClass": "Medical receivables", "performance": "Non-performing", "low": 3, "high": 12, "clientSegment": false }
+  ]
+}

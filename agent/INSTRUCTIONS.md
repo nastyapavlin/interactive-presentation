@@ -25,8 +25,14 @@ segment, known pain points, portfolio parameters, meeting time.
    - Buyers by type and by state: run the queries in `agent/queries/` against the
      warehouse (or the agreed export). Until warehouse access is configured, reuse the
      latest committed snapshot and keep its `asOf`.
-   - Pricing: read the published CSV of the pricing Google Sheet; mark rows relevant to
-     the client's segment with `"clientSegment": true`.
+   - Pricing: run `python3 agent/pricing_from_sheet.py --segment <client-segment>`.
+     It reads the team's auctions Google Sheet
+     (sheet id `1mAsVUm1UnhKypInNvRn-YT-RM9qyz7wQiMVaXLHIYV4`, columns:
+     Auction Number | Performing/Non-performing | Debt Type | Total Balance | Offer (%) | Offer (Price))
+     and aggregates min–max Offer (%) per (Debt Type, Performance). Merge the result with
+     `agent/pricing_defaults.json`: sheet rows override defaults (match by
+     assetClass+performance), defaults fill in asset classes the sheet doesn't cover yet.
+     Ensure at least one row has `"clientSegment": true`.
 5. **Write the config** to `deck/clients/<client-slug>.json` following
    `deck/clients/_template.json`. Slug: lowercase company name, hyphens, no punctuation.
    Set `meta.generatedAt` (now, UTC) and `meta.manager` (the requesting manager).

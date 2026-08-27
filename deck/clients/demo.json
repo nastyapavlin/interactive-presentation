@@ -52,9 +52,10 @@
       }
     },
     "pricing": {
-      "asOf": "2026-08-27",
+      "asOf": "2026-08-28",
+      "source": "Debexpert auctions sheet + market benchmarks",
       "rows": [
-        { "assetClass": "BHPH auto notes", "performance": "Performing", "low": 40, "high": 80, "clientSegment": true },
+        { "assetClass": "Auto / BHPH notes", "performance": "Performing", "low": 75, "high": 85, "auctions": 1, "clientSegment": true },
         { "assetClass": "Consumer installment", "performance": "Performing", "low": 30, "high": 65, "clientSegment": false },
         { "assetClass": "MCA receivables", "performance": "Non-performing", "low": 8, "high": 25, "clientSegment": false },
         { "assetClass": "Auto skip accounts", "performance": "Non-performing", "low": 5, "high": 20, "clientSegment": true },
