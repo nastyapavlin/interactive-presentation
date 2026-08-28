@@ -28,7 +28,7 @@ segment, known pain points, portfolio parameters, meeting time.
    - Pricing: run `python3 agent/pricing_from_sheet.py --segment <client-segment>`.
      It reads the team's auctions Google Sheet
      (sheet id `1mAsVUm1UnhKypInNvRn-YT-RM9qyz7wQiMVaXLHIYV4`, columns:
-     Auction Number | Performing/Non-performing | Debt Type | Total Balance | Offer (%) | Offer (Price))
+     Auction Number | Performing/Non-performing | Debt Type | Total Balance | Offer (%) | Offer (Price) | Date (Year))
      and aggregates min–max Offer (%) per (Debt Type, Performance). Merge the result with
      `agent/pricing_defaults.json`: sheet rows override defaults (match by
      assetClass+performance), defaults fill in asset classes the sheet doesn't cover yet.
