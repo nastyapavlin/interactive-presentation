@@ -1,0 +1,10 @@
+// Buyers grouped by type. ADAPT table/column names to the actual Power BI model:
+//   'Buyers'          -> your buyers dimension table
+//   [Buyer Type]      -> the buyer classification column (family office / fund / agency / ...)
+//   [Buyer ID]        -> unique buyer key
+EVALUATE
+SUMMARIZECOLUMNS (
+    'Buyers'[Buyer Type],
+    "Count", DISTINCTCOUNT ( 'Buyers'[Buyer ID] )
+)
+ORDER BY [Count] DESC

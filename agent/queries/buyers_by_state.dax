@@ -1,0 +1,11 @@
+// Buyers active per US state (bought or bid in the last 12 months).
+// ADAPT table/column names to the actual Power BI model:
+//   'BuyerStates'     -> fact/bridge table linking buyers to states they buy in
+//   [State]           -> two-letter state code
+//   [Buyer ID]        -> unique buyer key
+EVALUATE
+SUMMARIZECOLUMNS (
+    'BuyerStates'[State],
+    "Count", DISTINCTCOUNT ( 'BuyerStates'[Buyer ID] )
+)
+ORDER BY [Count] DESC

@@ -22,9 +22,11 @@ segment, known pain points, portfolio parameters, meeting time.
    data room, recourse/non-recourse flexibility, sell-the-tail servicing relief).
    Write them into `solutions` with `challengeRef` pointing at the challenge index.
 4. **Data snapshots.**
-   - Buyers by type and by state: run the queries in `agent/queries/` against the
-     warehouse (or the agreed export). Until warehouse access is configured, reuse the
-     latest committed snapshot and keep its `asOf`.
+   - Buyers by type and by state: run `python3 agent/buyers_from_powerbi.py` — it pulls
+     live counts from the Power BI dataset (DAX in `agent/queries/`, credentials in
+     `agent/.env`; one-time setup in `agent/POWERBI_SETUP.md`). Paste its output into
+     `data.buyers`. If credentials are not configured yet, reuse the latest committed
+     snapshot and keep its `asOf` date.
    - Pricing: run `python3 agent/pricing_from_sheet.py --segment <client-segment>`.
      It reads the team's auctions Google Sheet
      (sheet id `1mAsVUm1UnhKypInNvRn-YT-RM9qyz7wQiMVaXLHIYV4`, columns:
