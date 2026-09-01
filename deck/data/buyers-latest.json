@@ -1,0 +1,91 @@
+{
+  "asOf": "2026-09-01",
+  "source": "Power BI · USA preferences Main_",
+  "approximate": true,
+  "total": 5900,
+  "nationwide": 2600,
+  "byType": [
+    {
+      "type": "FinTechs",
+      "count": 1900,
+      "note": "Fintech lenders and investors active in consumer and specialty receivables."
+    },
+    {
+      "type": "Debt buying funds",
+      "count": 60,
+      "note": "Certified and associate debt buyers purchasing performing and charged-off portfolios."
+    },
+    {
+      "type": "Collection agencies",
+      "count": 10,
+      "note": "Agencies buying paper they will work themselves — strong bidders on skips and deficiencies."
+    },
+    {
+      "type": "Lenders & originators",
+      "count": 6,
+      "note": "Originating lenders acquiring portfolios adjacent to their core business."
+    },
+    {
+      "type": "Law firms",
+      "count": 2,
+      "note": "Legal-network buyers focused on judgments and legal-stage accounts."
+    },
+    {
+      "type": "Other & unclassified",
+      "count": 3900,
+      "note": "Registered buyers pending classification, brokers, affiliates and partners."
+    }
+  ],
+  "byState": {
+    "FL": 370,
+    "TX": 330,
+    "GA": 280,
+    "NY": 230,
+    "CA": 220,
+    "OH": 190,
+    "NC": 160,
+    "PA": 150,
+    "NJ": 150,
+    "MI": 150,
+    "VA": 140,
+    "AZ": 140,
+    "SC": 130,
+    "IL": 130,
+    "IN": 120,
+    "TN": 120,
+    "MO": 120,
+    "AL": 110,
+    "NV": 110,
+    "WA": 100,
+    "KY": 100,
+    "CO": 95,
+    "OK": 95,
+    "MS": 90,
+    "HI": 90,
+    "MD": 90,
+    "DE": 90,
+    "LA": 90,
+    "CT": 90,
+    "KS": 85,
+    "MA": 80,
+    "UT": 75,
+    "WI": 75,
+    "SD": 70,
+    "WY": 70,
+    "MT": 70,
+    "MN": 70,
+    "WV": 70,
+    "NH": 65,
+    "VT": 65,
+    "AR": 65,
+    "OR": 65,
+    "ID": 65,
+    "NM": 60,
+    "IA": 60,
+    "NE": 60,
+    "RI": 55,
+    "AK": 55,
+    "ND": 50,
+    "ME": 45
+  }
+}
