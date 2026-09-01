@@ -1,0 +1,248 @@
+{
+  "meta": {
+    "generatedAt": "2026-09-01T16:56:02Z",
+    "manager": {
+      "name": "Anastasia Pavlova",
+      "phone": "(302) 703-9387",
+      "email": "a.pavlova@debexpert.com"
+    }
+  },
+  "client": {
+    "name": "Sunshine Auto Sales",
+    "state": "FL",
+    "city": "Oakland Park",
+    "segment": "BHPH",
+    "segmentLabel": "Buy Here Pay Here dealer",
+    "logoUrl": null,
+    "profile": [
+      {
+        "title": "Broward County BHPH dealer",
+        "detail": "Independent dealer in Oakland Park (Fort Lauderdale metro) with in-house financing on a compact inventory."
+      },
+      {
+        "title": "In-house note book",
+        "detail": "You originate and service your own subprime auto notes - payments, collections and repossessions run through your back office."
+      },
+      {
+        "title": "Florida is the #1 buyer state",
+        "detail": "Florida leads Debexpert by dedicated state buyer interest - your paper is in a seller's market."
+      },
+      {
+        "title": "Long-duration notes",
+        "detail": "BHPH terms now average ~55 months - capital stays committed for years per vehicle sold."
+      }
+    ],
+    "challenges": [
+      {
+        "title": "Repossession costs eat the tail of the book",
+        "detail": "Recovery, storage, recon and resale under balance - BHPH repo rates run roughly 10x bank levels, and every repo cycle burns margin."
+      },
+      {
+        "title": "Cash is locked in notes for years, not months",
+        "detail": "At an average ~55-month term, money from each sale trickles back at ~$400/month while inventory opportunities pass by."
+      },
+      {
+        "title": "Bank lines are getting tighter, not cheaper",
+        "detail": "Lenders repriced BHPH risk after recent industry failures - extending or expanding credit lines costs more than it used to."
+      },
+      {
+        "title": "No market check on Florida paper",
+        "detail": "One-off offers from a single local buyer give you no way to know the true market price of your book."
+      }
+    ],
+    "industryInsights": [
+      {
+        "fact": "BHPH loan terms average ~55 months with repossession rates far above franchise-lender levels.",
+        "source": "Federal Reserve FEDS Notes, BHPH study, May 2026"
+      },
+      {
+        "fact": "Florida ranks #1 on Debexpert by dedicated state buyer interest.",
+        "source": "Debexpert platform data"
+      }
+    ],
+    "portfolio": {
+      "faceValue": null,
+      "accounts": null,
+      "performingShare": null,
+      "avgBalance": null
+    }
+  },
+  "solutions": [
+    {
+      "challengeRef": 0,
+      "title": "Sell the repo pipeline",
+      "detail": "Auction skips, deficiencies and charge-offs to agencies and legal buyers - stop funding recovery on paper that no longer pays."
+    },
+    {
+      "challengeRef": 1,
+      "title": "Cash in ~14 days, not 55 months",
+      "detail": "The average Debexpert auction closes and funds in about two weeks - years of trickle payments become inventory capital now."
+    },
+    {
+      "challengeRef": 2,
+      "title": "Liquidity without new debt",
+      "detail": "A portfolio sale is not a loan: no covenants, no interest, $0 seller fees - and you keep full control over what you sell."
+    },
+    {
+      "challengeRef": 3,
+      "title": "Let 370 Florida-focused buyers set the price",
+      "detail": "Florida-dedicated buyers plus 2,600 nationwide bidders compete in an open auction - you see every bid."
+    }
+  ],
+  "data": {
+    "buyers": {
+      "asOf": "2026-09-01",
+      "source": "Power BI · USA preferences Main_",
+      "approximate": true,
+      "total": 5900,
+      "nationwide": 2600,
+      "byType": [
+        {
+          "type": "FinTechs",
+          "count": 1900,
+          "note": "Fintech lenders and investors active in consumer and specialty receivables."
+        },
+        {
+          "type": "Debt buying funds",
+          "count": 60,
+          "note": "Certified and associate debt buyers purchasing performing and charged-off portfolios."
+        },
+        {
+          "type": "Collection agencies",
+          "count": 10,
+          "note": "Agencies buying paper they will work themselves — strong bidders on skips and deficiencies."
+        },
+        {
+          "type": "Lenders & originators",
+          "count": 6,
+          "note": "Originating lenders acquiring portfolios adjacent to their core business."
+        },
+        {
+          "type": "Law firms",
+          "count": 2,
+          "note": "Legal-network buyers focused on judgments and legal-stage accounts."
+        },
+        {
+          "type": "Other & unclassified",
+          "count": 3900,
+          "note": "Registered buyers pending classification, brokers, affiliates and partners."
+        }
+      ],
+      "byState": {
+        "FL": 370,
+        "TX": 330,
+        "GA": 280,
+        "NY": 230,
+        "CA": 220,
+        "OH": 190,
+        "NC": 160,
+        "PA": 150,
+        "NJ": 150,
+        "MI": 150,
+        "VA": 140,
+        "AZ": 140,
+        "SC": 130,
+        "IL": 130,
+        "IN": 120,
+        "TN": 120,
+        "MO": 120,
+        "AL": 110,
+        "NV": 110,
+        "WA": 100,
+        "KY": 100,
+        "CO": 95,
+        "OK": 95,
+        "MS": 90,
+        "HI": 90,
+        "MD": 90,
+        "DE": 90,
+        "LA": 90,
+        "CT": 90,
+        "KS": 85,
+        "MA": 80,
+        "UT": 75,
+        "WI": 75,
+        "SD": 70,
+        "WY": 70,
+        "MT": 70,
+        "MN": 70,
+        "WV": 70,
+        "NH": 65,
+        "VT": 65,
+        "AR": 65,
+        "OR": 65,
+        "ID": 65,
+        "NM": 60,
+        "IA": 60,
+        "NE": 60,
+        "RI": 55,
+        "AK": 55,
+        "ND": 50,
+        "ME": 45
+      }
+    },
+    "pricing": {
+      "asOf": "2026-09-01",
+      "source": "Debexpert auctions sheet + market benchmarks",
+      "rows": [
+        {
+          "assetClass": "Auto / BHPH notes",
+          "performance": "Performing",
+          "low": 75,
+          "high": 85,
+          "auctions": 1,
+          "clientSegment": true
+        },
+        {
+          "assetClass": "Consumer installment",
+          "performance": "Performing",
+          "low": 30,
+          "high": 65,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Judgment portfolios",
+          "performance": "Legal",
+          "low": 10,
+          "high": 30,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "MCA receivables",
+          "performance": "Non-performing",
+          "low": 8,
+          "high": 25,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Auto skip accounts",
+          "performance": "Non-performing",
+          "low": 5,
+          "high": 20,
+          "clientSegment": true
+        },
+        {
+          "assetClass": "Auto deficiency claims",
+          "performance": "Non-performing",
+          "low": 5,
+          "high": 15,
+          "clientSegment": true
+        },
+        {
+          "assetClass": "Credit card charge-offs",
+          "performance": "Non-performing",
+          "low": 4,
+          "high": 14,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Medical receivables",
+          "performance": "Non-performing",
+          "low": 3,
+          "high": 12,
+          "clientSegment": false
+        }
+      ]
+    }
+  }
+}
