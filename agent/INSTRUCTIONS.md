@@ -22,7 +22,10 @@ segment, known pain points, portfolio parameters, meeting time.
    data room, recourse/non-recourse flexibility, sell-the-tail servicing relief).
    Write them into `solutions` with `challengeRef` pointing at the challenge index.
 4. **Data snapshots.**
-   - Buyers by type and by state: run `python3 agent/buyers_from_powerbi.py` — it pulls
+   - Buyers by type and by state: run `python3 agent/buyers_from_powerbi.py --round` — it pulls
+     live counts rounded for publication. IMPORTANT: while decks are hosted in a PUBLIC
+     repository, ALWAYS pass `--round` — exact internal counts must not be committed.
+     Drop the flag only when the deck repo/hosting becomes private. The script pulls
      live counts from the Power BI dataset (DAX in `agent/queries/`, credentials in
      `agent/.env`; one-time setup in `agent/POWERBI_SETUP.md`). Paste its output into
      `data.buyers`. If credentials are not configured yet, reuse the latest committed

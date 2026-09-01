@@ -290,7 +290,7 @@ function build(){
   /* 3 — Buyer network */
   slideEl('', `
     <div class="kicker">03 · Who is on the other side</div>
-    <h1 class="slide-title">${fmtN(d.buyers.total)} Verified Buyers, Six Distinct Groups</h1>
+    <h1 class="slide-title">${d.buyers.approximate?'Over ':''}${fmtN(d.buyers.total)} Registered Buyers, ${['','One','Two','Three','Four','Five','Six','Seven','Eight'][d.buyers.byType.length]||d.buyers.byType.length} Distinct Groups</h1>
     <p class="slide-sub">Different buyer types want different paper — that's what makes the auction competitive across your whole portfolio. Click a group to learn more.</p>
     <div class="buyers-wrap grow">
       <svg id="donut" viewBox="0 0 240 240"></svg>
@@ -303,20 +303,22 @@ function build(){
 
   /* 4 — State map */
   const stCount = d.buyers.byState[c.state] || 0;
+  const nw = d.buyers.nationwide || 0;
+  const stTotal = stCount + nw;
   const top = Object.entries(d.buyers.byState).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([s,n])=>`${s} (${n})`).join(', ');
   slideEl('', `
     <div class="kicker">04 · Buyers in your state</div>
-    <h1 class="slide-title">${fmtN(stCount)} Buyers Actively Purchase ${esc(STATE_NAMES[c.state]||c.state)} Paper</h1>
+    <h1 class="slide-title">${d.buyers.approximate?'≈':''}${fmtN(stTotal)} Buyers Can Bid on ${esc(STATE_NAMES[c.state]||c.state)} Paper</h1>
     <p class="slide-sub">Debt prices depend on state law and collectability — what matters is how many buyers compete for paper in <b>your</b> state.</p>
     <div class="map-wrap grow">
       <svg id="usmap" viewBox="0 0 620 420"></svg>
       <div class="state-big">
-        <div class="num">${fmtN(stCount)}</div>
-        <div class="lbl">verified buyers bidding on ${esc(STATE_NAMES[c.state]||c.state)} portfolios</div>
-        <div class="sub">Most active states on the platform: <b>${esc(top)}</b>. Buyer counts shown are those who purchased or bid on paper in each state in the last 12 months.</div>
+        <div class="num">${fmtN(stTotal)}</div>
+        <div class="lbl">buyers for ${esc(STATE_NAMES[c.state]||c.state)} portfolios — ${fmtN(stCount)} focused on ${esc(c.state)}${nw?` plus ${fmtN(nw)} buying nationwide`:''}</div>
+        <div class="sub">States with most dedicated buyer interest: <b>${esc(top)}</b>. The map shows buyers with a stated focus on each state; nationwide buyers bid everywhere.</div>
       </div>
     </div>
-    <div class="asof">Live platform data as of ${esc(d.buyers.asOf)}</div>`);
+    <div class="asof">Live platform data as of ${esc(d.buyers.asOf)} · source: ${esc(d.buyers.source||'platform')}</div>`);
 
   /* 5 — Pricing */
   slideEl('', `
@@ -453,7 +455,7 @@ function drawDonut(){
     parts+=`<path d="M${p(a0,R)} A${R},${R} 0 ${large} 1 ${p(a1,R)} L${p(a1,r)} A${r},${r} 0 ${large} 0 ${p(a0,r)} Z" fill="${PALETTE[i%PALETTE.length]}" data-i="${i}" style="cursor:pointer;transition:opacity .15s"><title>${esc(x.type)}: ${x.count}</title></path>`;
     a0=a1;
   });
-  svg.innerHTML=parts+`<text class="donut-center" x="${cx}" y="${cy-4}" text-anchor="middle" font-size="34" fill="#0F172A">${fmtN(total)}</text><text x="${cx}" y="${cy+20}" text-anchor="middle" font-size="11" fill="#64748B" font-weight="600">VERIFIED BUYERS</text>`;
+  svg.innerHTML=parts+`<text class="donut-center" x="${cx}" y="${cy-4}" text-anchor="middle" font-size="34" fill="#0F172A">${fmtN(total)}</text><text x="${cx}" y="${cy+20}" text-anchor="middle" font-size="11" fill="#64748B" font-weight="600">REGISTERED BUYERS</text>`;
   const legend=$('#legend');
   legend.innerHTML=data.map((x,i)=>`<div class="lg-row" data-i="${i}"><span class="lg-dot" style="background:${PALETTE[i%PALETTE.length]}"></span><span class="t">${esc(x.type)}</span><span class="c">${fmtN(x.count)}</span></div>`).join('');
   const sel=i=>{

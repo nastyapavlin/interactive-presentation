@@ -1,10 +1,9 @@
-// Buyers grouped by type. ADAPT table/column names to the actual Power BI model:
-//   'Buyers'          -> your buyers dimension table
-//   [Buyer Type]      -> the buyer classification column (family office / fund / agency / ...)
-//   [Buyer ID]        -> unique buyer key
+// Buyers grouped by platform classification ("Тип типов компании"),
+// only companies marked as Buyer. Dataset: "USA preferences Main_".
 EVALUATE
 SUMMARIZECOLUMNS (
-    'Buyers'[Buyer Type],
-    "Count", DISTINCTCOUNT ( 'Buyers'[Buyer ID] )
+    'Инфа для карт'[Тип типов компании],
+    FILTER ( 'Инфа для карт', 'Инфа для карт'[Тип компании] = "Buyer" ),
+    "Count", DISTINCTCOUNT ( 'Инфа для карт'[Id компании] )
 )
 ORDER BY [Count] DESC

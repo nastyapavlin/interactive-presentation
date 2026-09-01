@@ -1,7 +1,11 @@
 {
   "meta": {
     "generatedAt": "2026-08-27T10:00:00Z",
-    "manager": { "name": "Anastasia Pavlova", "phone": "(302) 703-9387", "email": "a.pavlova@debexpert.com" }
+    "manager": {
+      "name": "Anastasia Pavlova",
+      "phone": "(302) 703-9387",
+      "email": "a.pavlova@debexpert.com"
+    }
   },
   "client": {
     "name": "Acme Auto Finance",
@@ -11,58 +15,233 @@
     "segmentLabel": "Buy Here Pay Here dealer",
     "logoUrl": null,
     "profile": [
-      { "title": "Independent BHPH dealer", "detail": "Two lots in the Dallas–Fort Worth metro, selling and financing ~70 vehicles a month." },
-      { "title": "In-house note portfolio", "detail": "Roughly $4.2M in face value across ~610 active accounts, serviced by your own team." },
-      { "title": "Growing Texas market", "detail": "DFW subprime auto demand keeps growing — inventory, not demand, is your constraint." },
-      { "title": "Rising cost of funds", "detail": "Floorplan and credit-line rates remain elevated, squeezing margin on every financed unit." }
+      {
+        "title": "Independent BHPH dealer",
+        "detail": "Two lots in the Dallas–Fort Worth metro, selling and financing ~70 vehicles a month."
+      },
+      {
+        "title": "In-house note portfolio",
+        "detail": "Roughly $4.2M in face value across ~610 active accounts, serviced by your own team."
+      },
+      {
+        "title": "Growing Texas market",
+        "detail": "DFW subprime auto demand keeps growing — inventory, not demand, is your constraint."
+      },
+      {
+        "title": "Rising cost of funds",
+        "detail": "Floorplan and credit-line rates remain elevated, squeezing margin on every financed unit."
+      }
     ],
     "challenges": [
-      { "title": "Cash is locked in slow-paying notes", "detail": "Capital sits in 30–42 month notes while inventory opportunities pass by every week." },
-      { "title": "Delinquency is creeping up", "detail": "Industry data shows subprime auto 60+ day delinquency near record highs — every month of holding adds charge-off risk." },
-      { "title": "Collections overhead keeps growing", "detail": "Skip tracing, repossessions and compliance eat into servicing margin on the tail of the portfolio." },
-      { "title": "Single-buyer offers feel like lowballs", "detail": "Direct offers from one local buyer give you no way to know the real market price of your paper." }
+      {
+        "title": "Cash is locked in slow-paying notes",
+        "detail": "Capital sits in 30–42 month notes while inventory opportunities pass by every week."
+      },
+      {
+        "title": "Delinquency is creeping up",
+        "detail": "Industry data shows subprime auto 60+ day delinquency near record highs — every month of holding adds charge-off risk."
+      },
+      {
+        "title": "Collections overhead keeps growing",
+        "detail": "Skip tracing, repossessions and compliance eat into servicing margin on the tail of the portfolio."
+      },
+      {
+        "title": "Single-buyer offers feel like lowballs",
+        "detail": "Direct offers from one local buyer give you no way to know the real market price of your paper."
+      }
     ],
     "industryInsights": [
-      { "fact": "Subprime auto 60+ day delinquencies hovered near record levels through 2025–2026.", "source": "Fitch Ratings, Auto ABS index" },
-      { "fact": "BHPH dealers' average cost of funds rose ~250 bps since 2022.", "source": "NIADA industry benchmarks" }
+      {
+        "fact": "Subprime auto 60+ day delinquencies hovered near record levels through 2025–2026.",
+        "source": "Fitch Ratings, Auto ABS index"
+      },
+      {
+        "fact": "BHPH dealers' average cost of funds rose ~250 bps since 2022.",
+        "source": "NIADA industry benchmarks"
+      }
     ],
-    "portfolio": { "faceValue": 4200000, "accounts": 610, "performingShare": 0.72, "avgBalance": 6885 }
+    "portfolio": {
+      "faceValue": 4200000,
+      "accounts": 610,
+      "performingShare": 0.72,
+      "avgBalance": 6885
+    }
   },
   "solutions": [
-    { "challengeRef": 0, "title": "Turn notes into cash in ~14 days", "detail": "The average Debexpert auction closes and funds in about two weeks — capital goes back into cars on your lot." },
-    { "challengeRef": 1, "title": "Transfer the risk while prices are strong", "detail": "Selling performing paper today locks in value before delinquency erodes it. Recourse and non-recourse structures available." },
-    { "challengeRef": 2, "title": "Sell the tail, keep the core", "detail": "Auction skips, deficiencies and charge-offs so your team services only accounts that pay." },
-    { "challengeRef": 3, "title": "Let 500+ buyers set the price", "detail": "A competitive auction replaces guesswork: verified buyers bid against each other, and you see every bid." }
+    {
+      "challengeRef": 0,
+      "title": "Turn notes into cash in ~14 days",
+      "detail": "The average Debexpert auction closes and funds in about two weeks — capital goes back into cars on your lot."
+    },
+    {
+      "challengeRef": 1,
+      "title": "Transfer the risk while prices are strong",
+      "detail": "Selling performing paper today locks in value before delinquency erodes it. Recourse and non-recourse structures available."
+    },
+    {
+      "challengeRef": 2,
+      "title": "Sell the tail, keep the core",
+      "detail": "Auction skips, deficiencies and charge-offs so your team services only accounts that pay."
+    },
+    {
+      "challengeRef": 3,
+      "title": "Let 500+ buyers set the price",
+      "detail": "A competitive auction replaces guesswork: verified buyers bid against each other, and you see every bid."
+    }
   ],
   "data": {
     "buyers": {
-      "asOf": "2026-08-27",
-      "total": 512,
+      "asOf": "2026-09-01",
+      "source": "Power BI · USA preferences Main_",
+      "approximate": true,
+      "total": 5900,
+      "nationwide": 2600,
       "byType": [
-        { "type": "Debt buying funds", "count": 168, "note": "Institutional funds purchasing performing and charged-off portfolios nationwide." },
-        { "type": "Collection agencies", "count": 142, "note": "Agencies buying paper they will work themselves — strong bidders on skips and deficiencies." },
-        { "type": "Specialty auto finance", "count": 54, "note": "Auto-focused finance companies acquiring performing BHPH notes with servicing." },
-        { "type": "Family offices", "count": 61, "note": "Private capital seeking yield in consumer and auto receivables." },
-        { "type": "Banks & credit unions", "count": 38, "note": "Regulated institutions buying seasoned performing paper." },
-        { "type": "Law firms & other", "count": 49, "note": "Legal-network buyers focused on judgments and legal-stage accounts." }
+        {
+          "type": "FinTechs",
+          "count": 1900,
+          "note": "Fintech lenders and investors active in consumer and specialty receivables."
+        },
+        {
+          "type": "Debt buying funds",
+          "count": 60,
+          "note": "Certified and associate debt buyers purchasing performing and charged-off portfolios."
+        },
+        {
+          "type": "Collection agencies",
+          "count": 10,
+          "note": "Agencies buying paper they will work themselves — strong bidders on skips and deficiencies."
+        },
+        {
+          "type": "Lenders & originators",
+          "count": 6,
+          "note": "Originating lenders acquiring portfolios adjacent to their core business."
+        },
+        {
+          "type": "Law firms",
+          "count": 2,
+          "note": "Legal-network buyers focused on judgments and legal-stage accounts."
+        },
+        {
+          "type": "Other & unclassified",
+          "count": 3900,
+          "note": "Registered buyers pending classification, brokers, affiliates and partners."
+        }
       ],
       "byState": {
-        "TX": 87, "CA": 74, "FL": 69, "GA": 41, "NY": 38, "IL": 33, "NC": 29, "OH": 27,
-        "PA": 26, "AZ": 24, "TN": 22, "MO": 19, "OK": 17, "LA": 16, "NM": 12, "AR": 14
+        "FL": 370,
+        "TX": 330,
+        "GA": 280,
+        "NY": 230,
+        "CA": 220,
+        "OH": 190,
+        "NC": 160,
+        "PA": 150,
+        "NJ": 150,
+        "MI": 150,
+        "VA": 140,
+        "AZ": 140,
+        "SC": 130,
+        "IL": 130,
+        "IN": 120,
+        "TN": 120,
+        "MO": 120,
+        "AL": 110,
+        "NV": 110,
+        "WA": 100,
+        "KY": 100,
+        "CO": 95,
+        "OK": 95,
+        "MS": 90,
+        "HI": 90,
+        "MD": 90,
+        "DE": 90,
+        "LA": 90,
+        "CT": 90,
+        "KS": 85,
+        "MA": 80,
+        "UT": 75,
+        "WI": 75,
+        "SD": 70,
+        "WY": 70,
+        "MT": 70,
+        "MN": 70,
+        "WV": 70,
+        "NH": 65,
+        "VT": 65,
+        "AR": 65,
+        "OR": 65,
+        "ID": 65,
+        "NM": 60,
+        "IA": 60,
+        "NE": 60,
+        "RI": 55,
+        "AK": 55,
+        "ND": 50,
+        "ME": 45
       }
     },
     "pricing": {
       "asOf": "2026-08-28",
       "source": "Debexpert auctions sheet + market benchmarks",
       "rows": [
-        { "assetClass": "Auto / BHPH notes", "performance": "Performing", "low": 75, "high": 85, "auctions": 1, "clientSegment": true },
-        { "assetClass": "Consumer installment", "performance": "Performing", "low": 30, "high": 65, "clientSegment": false },
-        { "assetClass": "MCA receivables", "performance": "Non-performing", "low": 8, "high": 25, "clientSegment": false },
-        { "assetClass": "Auto skip accounts", "performance": "Non-performing", "low": 5, "high": 20, "clientSegment": true },
-        { "assetClass": "Auto deficiency claims", "performance": "Non-performing", "low": 5, "high": 15, "clientSegment": true },
-        { "assetClass": "Judgment portfolios", "performance": "Legal", "low": 10, "high": 30, "clientSegment": false },
-        { "assetClass": "Credit card charge-offs", "performance": "Non-performing", "low": 4, "high": 14, "clientSegment": false },
-        { "assetClass": "Medical receivables", "performance": "Non-performing", "low": 3, "high": 12, "clientSegment": false }
+        {
+          "assetClass": "Auto / BHPH notes",
+          "performance": "Performing",
+          "low": 75,
+          "high": 85,
+          "auctions": 1,
+          "clientSegment": true
+        },
+        {
+          "assetClass": "Consumer installment",
+          "performance": "Performing",
+          "low": 30,
+          "high": 65,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "MCA receivables",
+          "performance": "Non-performing",
+          "low": 8,
+          "high": 25,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Auto skip accounts",
+          "performance": "Non-performing",
+          "low": 5,
+          "high": 20,
+          "clientSegment": true
+        },
+        {
+          "assetClass": "Auto deficiency claims",
+          "performance": "Non-performing",
+          "low": 5,
+          "high": 15,
+          "clientSegment": true
+        },
+        {
+          "assetClass": "Judgment portfolios",
+          "performance": "Legal",
+          "low": 10,
+          "high": 30,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Credit card charge-offs",
+          "performance": "Non-performing",
+          "low": 4,
+          "high": 14,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Medical receivables",
+          "performance": "Non-performing",
+          "low": 3,
+          "high": 12,
+          "clientSegment": false
+        }
       ]
     }
   }

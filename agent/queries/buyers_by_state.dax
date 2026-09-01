@@ -1,11 +1,12 @@
-// Buyers active per US state (bought or bid in the last 12 months).
-// ADAPT table/column names to the actual Power BI model:
-//   'BuyerStates'     -> fact/bridge table linking buyers to states they buy in
-//   [State]           -> two-letter state code
-//   [Buyer ID]        -> unique buyer key
+// Buyers per state of interest, resolved to 2-letter postal codes via the
+// state key table. "Nationwide" and regional buckets come back with blank
+// postal — the script folds "Nationwide" into its own count.
+// Dataset: "USA preferences Main_".
 EVALUATE
 SUMMARIZECOLUMNS (
-    'BuyerStates'[State],
-    "Count", DISTINCTCOUNT ( 'BuyerStates'[Buyer ID] )
+    'Ключ к картам'[postal],
+    'Ключ к картам'[name],
+    FILTER ( 'Инфа для карт', 'Инфа для карт'[Тип компании] = "Buyer" ),
+    "Count", DISTINCTCOUNT ( 'Инфа для карт'[Id компании] )
 )
 ORDER BY [Count] DESC
