@@ -41,7 +41,7 @@ Output: a deployed deck at `deck/?client=<slug>` and a short reply in Slack.
 7. **Deploy**: commit and push to `main`. GitHub Pages redeploys in ~1 minute.
    Verify: `deck/clients/<slug>.json` on the live site returns the new config.
 8. **Reply to the manager** (template):
-   > Deck ready: https://nastyapavlin.github.io/test/deck/?client=<slug>
+   > Deck ready: https://nastyapavlin.github.io/interactive-presentation/deck/?client=<slug>
    > Challenge hypotheses: 1) …, 2) …, 3) … — correct me before the meeting if I
    > misread the client. Slides 1–2 are personalized; buyers/pricing are the
    > latest platform snapshots (as of <asOf>).

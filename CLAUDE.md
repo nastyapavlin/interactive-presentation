@@ -5,7 +5,7 @@ tooling that generates per-client configs. A manager asks Claude (via Slack or
 any session) to "prepare a deck for <client>" — the agent researches the client,
 builds `deck/clients/<slug>.json`, pushes, and replies with the deck link.
 
-**Live URL pattern:** `https://nastyapavlin.github.io/test/deck/?client=<slug>`
+**Live URL pattern:** `https://nastyapavlin.github.io/interactive-presentation/deck/?client=<slug>`
 
 ## When asked to prepare a deck for a client
 
