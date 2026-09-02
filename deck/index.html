@@ -185,6 +185,32 @@
   #err h2{font-size:22px;font-weight:800;margin:14px 0 8px}
   #err p{font-size:14px;color:var(--slate)}
 
+  /* Email gate (share mode) */
+  #gate{position:fixed;inset:0;background:linear-gradient(150deg,#0F172A 0%,#1E293B 55%,#1D3A8A 100%);z-index:60;display:none;align-items:center;justify-content:center;padding:24px}
+  #gate .gbox{background:#fff;border-radius:18px;box-shadow:0 24px 64px rgba(0,0,0,.4);padding:40px;max-width:430px;width:100%;text-align:center}
+  #gate img{height:32px;margin-bottom:22px}
+  #gate h2{font-size:21px;font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+  #gate p.sub{font-size:14px;color:var(--slate);margin-bottom:22px}
+  #gate input{width:100%;padding:13px 16px;font-size:15px;font-family:inherit;border:1.5px solid var(--border);border-radius:9px;outline:none;margin-bottom:6px;transition:border .15s}
+  #gate input:focus{border-color:var(--blue)}
+  #gate .gerr{font-size:12.5px;color:#DC2626;min-height:18px;margin-bottom:8px;text-align:left}
+  #gate button{width:100%;padding:13px;font-size:15px;font-weight:700;font-family:inherit;background:var(--blue);color:#fff;border:none;border-radius:9px;cursor:pointer;transition:background .15s}
+  #gate button:hover{background:var(--blue-dark)}
+  #gate button:disabled{opacity:.6;cursor:wait}
+  #gate .fine{font-size:11.5px;color:var(--slate-light);margin-top:14px}
+  #pdfbtn{width:auto;padding:0 12px;font-size:13px;gap:6px}
+
+  /* Print (Download PDF) */
+  @media print{
+    #navbar,#progress,#gate,#err{display:none !important}
+    html,body{overflow:visible;height:auto}
+    #deck{position:static;inset:auto;overflow:visible}
+    .slide{position:relative;opacity:1 !important;transform:none !important;pointer-events:auto;overflow:visible;page-break-after:always;min-height:96vh;padding:40px 48px}
+    .slide.prev{transform:none !important}
+    .cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .darkslide,.zero-card,.total-card,.cta{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+
   @media(max-width:900px){
     .slide{padding:34px 22px 30px}
     .grid2,.grid4,.buyers-wrap,.map-wrap,.lot-wrap,.trans-wrap,.expect-wrap{grid-template-columns:1fr;gap:18px}
@@ -205,8 +231,19 @@
   <div id="dots"></div>
   <button class="navbtn" id="nextb" title="Next slide">›</button>
   <span id="counter">1 / 10</span>
+  <button class="navbtn" id="pdfbtn" title="Download PDF">⬇ PDF</button>
   <button class="navbtn" id="fsbtn" title="Fullscreen (F)">⛶</button>
 </div>
+
+<div id="gate"><div class="gbox">
+  <img src="assets/debexpert-logo.svg" alt="Debexpert">
+  <h2 id="gate-title">View this presentation</h2>
+  <p class="sub">Enter your business email to open the presentation prepared for you by Debexpert.</p>
+  <input type="email" id="gate-email" placeholder="name@company.com" autocomplete="email">
+  <div class="gerr" id="gate-err"></div>
+  <button id="gate-go">View presentation</button>
+  <p class="fine">Your email is shared only with your Debexpert manager so they can follow up.</p>
+</div></div>
 
 <div id="err"><div class="box">
   <img src="assets/debexpert-logo.svg" alt="Debexpert" style="height:34px">
@@ -226,23 +263,86 @@ const PALETTE = ['#2563EB','#60A5FA','#0EA5E9','#7C3AED','#0F766E','#94A3B8'];
 const TILES = {AK:[0,0],ME:[11,0],VT:[10,1],NH:[11,1],WA:[1,2],ID:[2,2],MT:[3,2],ND:[4,2],MN:[5,2],WI:[6,2],MI:[8,2],NY:[9,2],MA:[10,2],RI:[11,2],OR:[1,3],NV:[2,3],WY:[3,3],SD:[4,3],IA:[5,3],IL:[6,3],IN:[7,3],OH:[8,3],PA:[9,3],NJ:[10,3],CT:[11,3],CA:[1,4],UT:[2,4],CO:[3,4],NE:[4,4],MO:[5,4],KY:[6,4],WV:[7,4],VA:[8,4],MD:[9,4],DE:[10,4],AZ:[2,5],NM:[3,5],KS:[4,5],AR:[5,5],TN:[6,5],NC:[7,5],SC:[8,5],DC:[9,5],OK:[4,6],LA:[5,6],MS:[6,6],AL:[7,6],GA:[8,6],HI:[0,7],TX:[4,7],FL:[9,7]};
 const STATE_NAMES = {AL:'Alabama',AK:'Alaska',AZ:'Arizona',AR:'Arkansas',CA:'California',CO:'Colorado',CT:'Connecticut',DE:'Delaware',DC:'D.C.',FL:'Florida',GA:'Georgia',HI:'Hawaii',ID:'Idaho',IL:'Illinois',IN:'Indiana',IA:'Iowa',KS:'Kansas',KY:'Kentucky',LA:'Louisiana',ME:'Maine',MD:'Maryland',MA:'Massachusetts',MI:'Michigan',MN:'Minnesota',MS:'Mississippi',MO:'Missouri',MT:'Montana',NE:'Nebraska',NV:'Nevada',NH:'New Hampshire',NJ:'New Jersey',NM:'New Mexico',NY:'New York',NC:'North Carolina',ND:'North Dakota',OH:'Ohio',OK:'Oklahoma',OR:'Oregon',PA:'Pennsylvania',RI:'Rhode Island',SC:'South Carolina',SD:'South Dakota',TN:'Tennessee',TX:'Texas',UT:'Utah',VT:'Vermont',VA:'Virginia',WA:'Washington',WV:'West Virginia',WI:'Wisconsin',WY:'Wyoming'};
 
+/* Tracking endpoint (Cloudflare Worker). Empty string disables the email gate. */
+const TRACK_URL = '';
+
 let C = null; // config
-let cur = 0, slides = [];
+let cur = 0, slides = [], maxSeen = 0;
+const PARAMS = new URLSearchParams(location.search);
+const SLUG = (PARAMS.get('client') || 'demo').replace(/[^a-z0-9-_]/gi,'');
+const SHARE = PARAMS.get('share') === '1' && !!TRACK_URL;
+const LS_KEY = 'deck-email-' + SLUG;
+let viewerEmail = null;
+try{ viewerEmail = localStorage.getItem(LS_KEY); }catch(e){}
+
+function track(event, extra){
+  if(!SHARE || !TRACK_URL || !viewerEmail) return Promise.resolve({ok:true});
+  const payload = JSON.stringify(Object.assign({
+    deck: SLUG, email: viewerEmail, event,
+    manager: C && C.meta && C.meta.manager ? C.meta.manager.name : ''
+  }, extra||{}));
+  return fetch(TRACK_URL, {method:'POST', headers:{'Content-Type':'application/json'}, body: payload})
+    .then(r => r.json()).catch(() => ({ok:false}));
+}
+
+function initGate(){
+  const show = () => { $('#gate').style.display = 'flex'; $('#gate-email').focus(); };
+  const hide = () => { $('#gate').style.display = 'none'; };
+  if(!SHARE){ hide(); return; }
+  $('#gate-title').textContent = 'Presentation for ' + C.client.name;
+  if(viewerEmail){
+    hide();
+    track('view');
+    return;
+  }
+  show();
+  const submit = async () => {
+    const email = $('#gate-email').value.trim().toLowerCase();
+    const err = $('#gate-err');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ err.textContent = 'Enter a valid email address'; return; }
+    err.textContent = '';
+    $('#gate-go').disabled = true;
+    viewerEmail = email;
+    const res = await track('view');
+    $('#gate-go').disabled = false;
+    if(res && res.ok){
+      try{ localStorage.setItem(LS_KEY, email); }catch(e){}
+      hide();
+    }else{
+      viewerEmail = null;
+      err.textContent = 'Could not verify right now — please try again.';
+    }
+  };
+  $('#gate-go').onclick = submit;
+  $('#gate-email').addEventListener('keydown', e => { if(e.key === 'Enter') submit(); });
+}
 
 async function boot(){
-  const slug = (new URLSearchParams(location.search).get('client') || 'demo').replace(/[^a-z0-9-_]/gi,'');
   try{
-    const r = await fetch('clients/' + slug + '.json', {cache:'no-store'});
+    const r = await fetch('clients/' + SLUG + '.json', {cache:'no-store'});
     if(!r.ok) throw new Error('HTTP ' + r.status);
     C = await r.json();
   }catch(e){
     $('#err').style.display = 'flex';
-    $('#errmsg').textContent = 'Configuration "' + slug + '" could not be loaded. Please check the link or contact your Debexpert manager.';
+    $('#errmsg').textContent = 'Configuration "' + SLUG + '" could not be loaded. Please check the link or contact your Debexpert manager.';
     return;
   }
   document.title = 'Debexpert — Proposal for ' + C.client.name;
   build();
+  initGate();
 }
+
+document.addEventListener('visibilitychange', () => {
+  if(document.visibilityState === 'hidden' && SHARE && viewerEmail && TRACK_URL && maxSeen > 0){
+    try{
+      navigator.sendBeacon(TRACK_URL, new Blob([JSON.stringify({
+        deck: SLUG, email: viewerEmail, event: 'progress', progress: maxSeen + 1,
+        manager: C && C.meta && C.meta.manager ? C.meta.manager.name : ''
+      })], {type:'application/json'}));
+      maxSeen = 0;
+    }catch(e){}
+  }
+});
 
 function slideEl(cls, html){
   const s = document.createElement('section');
@@ -425,6 +525,7 @@ function buildDots(){
 function go(i, instant){
   if(i<0||i>=slides.length)return;
   cur=i;
+  if(i>maxSeen)maxSeen=i;
   slides.forEach((s,j)=>{s.classList.toggle('active',j===i);s.classList.toggle('prev',j<i);});
   document.querySelectorAll('.dot').forEach((d,j)=>d.classList.toggle('on',j===i));
   $('#counter').textContent=(i+1)+' / '+slides.length;
@@ -438,6 +539,7 @@ document.addEventListener('keydown',e=>{
 });
 $('#prevb').onclick=()=>go(cur-1); $('#nextb').onclick=()=>go(cur+1);
 $('#fsbtn').onclick=toggleFS;
+$('#pdfbtn').onclick=()=>{ track('download'); window.print(); };
 function toggleFS(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}
 let tx=null;
 document.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});

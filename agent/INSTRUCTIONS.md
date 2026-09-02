@@ -46,6 +46,16 @@ Output: a deployed deck at `deck/?client=<slug>` and a short reply in Slack.
    > misread the client. Slides 1–2 are personalized; buyers/pricing are the
    > latest platform snapshots (as of <asOf>).
 
+## Share links (after the meeting)
+
+To send the deck to the client, the manager appends `&share=1` to the URL:
+`deck/?client=<slug>&share=1`. That version asks the viewer for their email
+before opening, notifies Slack (#deck-views) about every view/download, and
+offers a Download PDF button. Without `&share=1` the deck opens instantly —
+that's the manager's own presenting link. The gate only activates once the
+tracking worker URL is configured in `deck/index.html` (`TRACK_URL`);
+see `worker/README.md` for the one-time Cloudflare + Slack setup.
+
 ## Style rules
 
 - Deck language: English. Tone: confident, specific, no filler.
