@@ -1,0 +1,263 @@
+{
+  "meta": {
+    "generatedAt": "2026-09-02T14:51:40Z",
+    "manager": {
+      "name": "Anastasia Pavlova",
+      "phone": "(302) 703-9387",
+      "email": "a.pavlova@debexpert.com"
+    }
+  },
+  "client": {
+    "name": "Lone Star Lending",
+    "state": "TX",
+    "city": null,
+    "segment": "consumer",
+    "segmentLabel": "Consumer installment lender",
+    "logoUrl": null,
+    "profile": [
+      {
+        "title": "Texas consumer installment lender",
+        "detail": "You originate installment credit in Texas under the OCCC regulated-lender framework — licensed, examined, and priced against a market that keeps adding capacity."
+      },
+      {
+        "title": "You hold and service your own paper",
+        "detail": "Underwriting, servicing and collections all sit in-house, so every basis point of deterioration lands on your balance sheet and your collections floor."
+      },
+      {
+        "title": "Texas is the #2 buyer state on Debexpert",
+        "detail": "330 buyers name Texas as a dedicated focus — second only to Florida. Texas consumer paper competes for bids, it doesn't beg for them."
+      },
+      {
+        "title": "Year-end is a hard date, not a target",
+        "detail": "Audited year-end numbers, covenant tests and 2027 origination budgets all land on the same December calendar — liquidity raised in November counts, liquidity raised in February doesn't."
+      }
+    ],
+    "challenges": [
+      {
+        "title": "Charge-offs are climbing faster than recoveries",
+        "detail": "Rising charge-offs hit twice: the write-down itself, then months of servicing cost chasing accounts that will not cure. Internal collections capacity is finite, and the oldest paper is where recovery per dollar spent is worst."
+      },
+      {
+        "title": "You need cash on the balance sheet before year end",
+        "detail": "Liquidity has a deadline. Refinancing, a new facility or a capital raise all take months of diligence — and land in 2027, after the numbers that matter have already been struck."
+      },
+      {
+        "title": "Deterioration shrinks the borrowing base exactly when you need it",
+        "detail": "Warehouse advance rates are tied to delinquency status, so rising DQ mechanically reduces eligible collateral. The line gets smaller precisely in the quarter you were counting on it to get bigger."
+      },
+      {
+        "title": "No market price on your Texas book",
+        "detail": "A single bilateral offer from one buyer tells you what that buyer wants to pay, not what your portfolio is worth. Without competing bids you have no defensible mark for the board or the auditors."
+      }
+    ],
+    "industryInsights": [
+      {
+        "fact": "Charge-offs on consumer loans at U.S. commercial banks reached 2.98%, the highest since 2011, with 30+ day delinquency at 2.75%, the highest since 2012.",
+        "source": "Federal Reserve consumer-loan charge-off and delinquency series (FRED), cited in Jefferson Capital SEC filings, 2026"
+      },
+      {
+        "fact": "Warehouse advance rates run roughly 60–92% depending on asset type and loan delinquency status — deterioration directly compresses the borrowing base.",
+        "source": "SEC 10-Q facility disclosures, 2026"
+      },
+      {
+        "fact": "Texas OCCC-licensed lenders originated ~12.4 million loans for $9.1 billion in 2024, with Chapter 342-E large installment originations up ~170% — more competition for the same borrowers.",
+        "source": "Texas OCCC, 2025 Report on Availability, Quality and Pricing of Certain Consumer Loan Products"
+      },
+      {
+        "fact": "Texas ranks #2 on Debexpert by dedicated state buyer interest, with 330 Texas-focused buyers.",
+        "source": "Debexpert platform data"
+      }
+    ],
+    "portfolio": {
+      "faceValue": null,
+      "accounts": null,
+      "performingShare": null,
+      "avgBalance": null
+    }
+  },
+  "solutions": [
+    {
+      "challengeRef": 0,
+      "title": "Sell the charged-off tail instead of working it",
+      "detail": "Agencies and legal-network buyers bid on charge-offs as their core business. Selling converts a cost center into cash today and frees your collectors for the accounts that can still cure."
+    },
+    {
+      "challengeRef": 1,
+      "title": "Funded in about 14 days, $0 seller fees",
+      "detail": "The average Debexpert auction closes and funds in roughly two weeks. Starting in September or October puts settled cash on the year-end balance sheet with room to spare — and the seller pays nothing."
+    },
+    {
+      "challengeRef": 2,
+      "title": "Liquidity without adding debt",
+      "detail": "A portfolio sale is not a facility: no covenants, no interest, no advance-rate haircut. Selling the deteriorated slice raises cash and cleans the pool your line is measured against, at once."
+    },
+    {
+      "challengeRef": 3,
+      "title": "Let 330 Texas-focused buyers set the price",
+      "detail": "330 Texas-dedicated buyers plus 2,600 bidding nationwide compete in an open auction behind an NDA-protected data room. You see every bid, you set the reserve, and you decide what to sell — performing, non-performing, or a slice of each."
+    }
+  ],
+  "data": {
+    "buyers": {
+      "asOf": "2026-09-01",
+      "source": "Power BI · USA preferences Main_",
+      "approximate": true,
+      "total": 5900,
+      "nationwide": 2600,
+      "byType": [
+        {
+          "type": "FinTechs",
+          "count": 1900,
+          "note": "Fintech lenders and investors active in consumer and specialty receivables."
+        },
+        {
+          "type": "Debt buying funds",
+          "count": 60,
+          "note": "Certified and associate debt buyers purchasing performing and charged-off portfolios."
+        },
+        {
+          "type": "Collection agencies",
+          "count": 10,
+          "note": "Agencies buying paper they will work themselves — the core bidders on charged-off consumer installment accounts."
+        },
+        {
+          "type": "Lenders & originators",
+          "count": 6,
+          "note": "Originating lenders acquiring performing portfolios adjacent to their own book."
+        },
+        {
+          "type": "Law firms",
+          "count": 2,
+          "note": "Legal-network buyers focused on judgments and legal-stage accounts."
+        },
+        {
+          "type": "Other & unclassified",
+          "count": 3900,
+          "note": "Registered buyers pending classification, brokers, affiliates and partners."
+        }
+      ],
+      "byState": {
+        "FL": 370,
+        "TX": 330,
+        "GA": 280,
+        "NY": 230,
+        "CA": 220,
+        "OH": 190,
+        "NC": 160,
+        "PA": 150,
+        "NJ": 150,
+        "MI": 150,
+        "VA": 140,
+        "AZ": 140,
+        "SC": 130,
+        "IL": 130,
+        "IN": 120,
+        "TN": 120,
+        "MO": 120,
+        "AL": 110,
+        "NV": 110,
+        "WA": 100,
+        "KY": 100,
+        "CO": 95,
+        "OK": 95,
+        "MS": 90,
+        "HI": 90,
+        "MD": 90,
+        "DE": 90,
+        "LA": 90,
+        "CT": 90,
+        "KS": 85,
+        "MA": 80,
+        "UT": 75,
+        "WI": 75,
+        "SD": 70,
+        "WY": 70,
+        "MT": 70,
+        "MN": 70,
+        "WV": 70,
+        "NH": 65,
+        "VT": 65,
+        "AR": 65,
+        "OR": 65,
+        "ID": 65,
+        "NM": 60,
+        "IA": 60,
+        "NE": 60,
+        "RI": 55,
+        "AK": 55,
+        "ND": 50,
+        "ME": 45
+      }
+    },
+    "pricing": {
+      "asOf": "2026-09-02",
+      "source": "Debexpert auctions sheet + market benchmarks",
+      "rows": [
+        {
+          "assetClass": "Consumer installment",
+          "performance": "Performing",
+          "low": 30,
+          "high": 65,
+          "clientSegment": true
+        },
+        {
+          "assetClass": "Consumer installment charge-offs",
+          "performance": "Non-performing",
+          "low": 4,
+          "high": 12,
+          "clientSegment": true
+        },
+        {
+          "assetClass": "Auto / BHPH notes",
+          "performance": "Performing",
+          "low": 75,
+          "high": 85,
+          "auctions": 1,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Judgment portfolios",
+          "performance": "Legal",
+          "low": 10,
+          "high": 30,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "MCA receivables",
+          "performance": "Non-performing",
+          "low": 8,
+          "high": 25,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Credit card charge-offs",
+          "performance": "Non-performing",
+          "low": 4,
+          "high": 14,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Auto skip accounts",
+          "performance": "Non-performing",
+          "low": 5,
+          "high": 20,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Auto deficiency claims",
+          "performance": "Non-performing",
+          "low": 5,
+          "high": 15,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Medical receivables",
+          "performance": "Non-performing",
+          "low": 3,
+          "high": 12,
+          "clientSegment": false
+        }
+      ]
+    }
+  }
+}
