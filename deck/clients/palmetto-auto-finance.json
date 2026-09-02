@@ -1,0 +1,252 @@
+{
+  "meta": {
+    "generatedAt": "2026-09-02T15:30:00Z",
+    "manager": {
+      "name": "Anastasia Pavlova",
+      "phone": "(302) 703-9387",
+      "email": "a.pavlova@debexpert.com"
+    }
+  },
+  "client": {
+    "name": "Palmetto Auto Finance",
+    "state": "SC",
+    "city": null,
+    "segment": "BHPH",
+    "segmentLabel": "Buy Here Pay Here dealer",
+    "logoUrl": null,
+    "profile": [
+      {
+        "title": "South Carolina BHPH dealer",
+        "detail": "Independent Buy Here Pay Here operator serving deep-subprime and subprime buyers in South Carolina's used-car market."
+      },
+      {
+        "title": "In-house note book",
+        "detail": "You originate and service your own auto notes - payments, collections and repossessions all run through your back office."
+      },
+      {
+        "title": "Collections carry the whole model",
+        "detail": "With most buyers deep-subprime, cash flow depends on the speed and consistency of collections, not on the sale itself."
+      },
+      {
+        "title": "Long-duration, capital-heavy paper",
+        "detail": "Each financed vehicle ties up capital for years while payments trickle back weekly or biweekly."
+      }
+    ],
+    "challenges": [
+      {
+        "title": "Slow collections are starving cash flow",
+        "detail": "A manual, thin-staffed back office means every extra day-to-collect delays the cash you need to restock - and slow accounts quietly slide toward charge-off."
+      },
+      {
+        "title": "Repossession and charge-off exposure is high",
+        "detail": "BHPH paper is far likelier to sit delinquent or in active repossession than franchise-lender loans - the tail of the book keeps growing and eating margin."
+      },
+      {
+        "title": "Bank credit is getting tighter and pricier",
+        "detail": "After recent high-profile BHPH failures, lenders repriced the segment - floor-plan and credit-line costs are up and advance rates are down."
+      },
+      {
+        "title": "No market check on South Carolina paper",
+        "detail": "One-off offers from a single local buyer give you no way to know the true market price of your book."
+      }
+    ],
+    "industryInsights": [
+      {
+        "fact": "BHPH loans run roughly 10% delinquent versus about 3.8% for traditional auto lenders, and are far likelier to be in active repossession.",
+        "source": "Federal Reserve FEDS Notes, Buy Here Pay Here study, May 2026"
+      },
+      {
+        "fact": "Subprime 60+ day auto delinquency hit an all-time high of about 6.65% at the end of 2025.",
+        "source": "Fitch Ratings, Auto ABS index"
+      },
+      {
+        "fact": "South Carolina has 130 dedicated state buyers on Debexpert, plus 2,600 nationwide bidders.",
+        "source": "Debexpert platform data"
+      }
+    ],
+    "portfolio": {
+      "faceValue": null,
+      "accounts": null,
+      "performingShare": null,
+      "avgBalance": null
+    }
+  },
+  "solutions": [
+    {
+      "challengeRef": 0,
+      "title": "Sell the slow tail, keep the payers",
+      "detail": "Auction skips, deficiencies and charge-offs to agencies and legal buyers - your team stops chasing paper that no longer pays and works only accounts that do."
+    },
+    {
+      "challengeRef": 1,
+      "title": "Transfer risk while prices hold",
+      "detail": "Sell performing paper before delinquency erodes it - recourse and non-recourse structures available."
+    },
+    {
+      "challengeRef": 2,
+      "title": "Liquidity without new debt",
+      "detail": "A portfolio sale is not a loan: no covenants, no interest, $0 seller fees, and it funds in about 14 days - years of trickle payments become inventory capital now."
+    },
+    {
+      "challengeRef": 3,
+      "title": "Let the market set the price",
+      "detail": "130 South Carolina-focused buyers plus 2,600 nationwide bidders compete in an open auction - you see every bid."
+    }
+  ],
+  "data": {
+    "buyers": {
+      "asOf": "2026-09-01",
+      "source": "Power BI · USA preferences Main_",
+      "approximate": true,
+      "total": 5900,
+      "nationwide": 2600,
+      "byType": [
+        {
+          "type": "FinTechs",
+          "count": 1900,
+          "note": "Fintech lenders and investors active in consumer and specialty receivables."
+        },
+        {
+          "type": "Debt buying funds",
+          "count": 60,
+          "note": "Certified and associate debt buyers purchasing performing and charged-off portfolios."
+        },
+        {
+          "type": "Collection agencies",
+          "count": 10,
+          "note": "Agencies buying paper they will work themselves — strong bidders on skips and deficiencies."
+        },
+        {
+          "type": "Lenders & originators",
+          "count": 6,
+          "note": "Originating lenders acquiring portfolios adjacent to their core business."
+        },
+        {
+          "type": "Law firms",
+          "count": 2,
+          "note": "Legal-network buyers focused on judgments and legal-stage accounts."
+        },
+        {
+          "type": "Other & unclassified",
+          "count": 3900,
+          "note": "Registered buyers pending classification, brokers, affiliates and partners."
+        }
+      ],
+      "byState": {
+        "FL": 370,
+        "TX": 330,
+        "GA": 280,
+        "NY": 230,
+        "CA": 220,
+        "OH": 190,
+        "NC": 160,
+        "PA": 150,
+        "NJ": 150,
+        "MI": 150,
+        "VA": 140,
+        "AZ": 140,
+        "SC": 130,
+        "IL": 130,
+        "IN": 120,
+        "TN": 120,
+        "MO": 120,
+        "AL": 110,
+        "NV": 110,
+        "WA": 100,
+        "KY": 100,
+        "CO": 95,
+        "OK": 95,
+        "MS": 90,
+        "HI": 90,
+        "MD": 90,
+        "DE": 90,
+        "LA": 90,
+        "CT": 90,
+        "KS": 85,
+        "MA": 80,
+        "UT": 75,
+        "WI": 75,
+        "SD": 70,
+        "WY": 70,
+        "MT": 70,
+        "MN": 70,
+        "WV": 70,
+        "NH": 65,
+        "VT": 65,
+        "AR": 65,
+        "OR": 65,
+        "ID": 65,
+        "NM": 60,
+        "IA": 60,
+        "NE": 60,
+        "RI": 55,
+        "AK": 55,
+        "ND": 50,
+        "ME": 45
+      }
+    },
+    "pricing": {
+      "asOf": "2026-09-01",
+      "source": "Debexpert auctions sheet + market benchmarks",
+      "rows": [
+        {
+          "assetClass": "Auto / BHPH notes",
+          "performance": "Performing",
+          "low": 75,
+          "high": 85,
+          "auctions": 1,
+          "clientSegment": true
+        },
+        {
+          "assetClass": "Consumer installment",
+          "performance": "Performing",
+          "low": 30,
+          "high": 65,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Judgment portfolios",
+          "performance": "Legal",
+          "low": 10,
+          "high": 30,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "MCA receivables",
+          "performance": "Non-performing",
+          "low": 8,
+          "high": 25,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Auto skip accounts",
+          "performance": "Non-performing",
+          "low": 5,
+          "high": 20,
+          "clientSegment": true
+        },
+        {
+          "assetClass": "Auto deficiency claims",
+          "performance": "Non-performing",
+          "low": 5,
+          "high": 15,
+          "clientSegment": true
+        },
+        {
+          "assetClass": "Credit card charge-offs",
+          "performance": "Non-performing",
+          "low": 4,
+          "high": 14,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Medical receivables",
+          "performance": "Non-performing",
+          "low": 3,
+          "high": 12,
+          "clientSegment": false
+        }
+      ]
+    }
+  }
+}
