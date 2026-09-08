@@ -453,9 +453,9 @@ function build(){
   /* 7 — Lotting */
   const pf = c.portfolio||{};
   slideEl('', `
-    <div class="kicker">07 · Lotting strategy</div>
-    <h1 class="slide-title">Let's Lot Your Portfolio — Live</h1>
-    <p class="slide-sub">The right split into lots widens the bidder pool and raises the total price. Adjust the numbers — this is your portfolio, roughly.</p>
+    <div class="kicker">07 · Pooling strategy</div>
+    <h1 class="slide-title">Let's Pool Your Portfolio — Live</h1>
+    <p class="slide-sub">The right split into pools widens buyer competition and raises the total price. Adjust the numbers — this is your portfolio, roughly.</p>
     <div class="lot-wrap grow">
       <div class="controls">
         <div class="ctl"><label>Portfolio face value <output id="o-face"></output></label>
@@ -605,14 +605,14 @@ function initLotting(){
     const lots=[];
     if(pFace>0){
       if(pFace>3e6){
-        lots.push({np:false,name:'Lot 1 — Performing (tranche A)',face:pFace/2,acc:Math.round(acc*share/2),r:perfR,d:'Splitting performing paper into two tranches widens the bidder pool — smaller funds can compete too.'});
-        lots.push({np:false,name:'Lot 2 — Performing (tranche B)',face:pFace/2,acc:Math.round(acc*share/2),r:perfR,d:'Same profile as tranche A; separate auctions let buyers bid on both or either.'});
+        lots.push({np:false,name:'Pool 1 — Performing (tranche A)',face:pFace/2,acc:Math.round(acc*share/2),r:perfR,d:'Splitting performing paper into two tranches widens buyer competition — smaller funds can compete too.'});
+        lots.push({np:false,name:'Pool 2 — Performing (tranche B)',face:pFace/2,acc:Math.round(acc*share/2),r:perfR,d:'Same profile as tranche A; separate auctions let buyers bid on both or either.'});
       }else{
-        lots.push({np:false,name:'Lot 1 — Performing accounts',face:pFace,acc:Math.round(acc*share),r:perfR,d:'Current, paying accounts with payment history — the premium slice of your portfolio.'});
+        lots.push({np:false,name:'Pool 1 — Performing accounts',face:pFace,acc:Math.round(acc*share),r:perfR,d:'Current, paying accounts with payment history — the premium slice of your portfolio.'});
       }
     }
     if(npFace>50000){
-      lots.push({np:true,name:'Lot '+(lots.length+1)+' — Skips, deficiencies & charge-offs',face:npFace,acc:acc-Math.round(acc*share),r:npR,d:'Specialist buyers (agencies, legal networks) bid on this paper — money you may have written off.'});
+      lots.push({np:true,name:'Pool '+(lots.length+1)+' — Skips, deficiencies & charge-offs',face:npFace,acc:acc-Math.round(acc*share),r:npR,d:'Specialist buyers (agencies, legal networks) bid on this paper — money you may have written off.'});
     }
     $('#lots').innerHTML=lots.map(l=>`<div class="lot ${l.np?'np':''}"><h4>${esc(l.name)}</h4><span class="money">${fmtM(l.face*l.r.low/100)} – ${fmtM(l.face*l.r.high/100)}</span><div class="d">${fmtM(l.face)} face · ~${fmtN(l.acc)} accounts · market ${l.r.low}–${l.r.high}¢/$ — ${esc(l.d)}</div></div>`).join('')||'<div class="hint">Move the sliders to model the portfolio.</div>';
     const lo=lots.reduce((s,l)=>s+l.face*l.r.low/100,0), hi=lots.reduce((s,l)=>s+l.face*l.r.high/100,0);
