@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --blue:#2563EB; --blue-dark:#1D4ED8; --blue-light:#EFF6FF; --blue-soft:#DDE8FF;
+    --blue:#E11D48; --blue-dark:#BE123C; --blue-light:#FFF1F2; --blue-soft:#FECDD3;
     --navy:#0F172A; --slate:#475569; --slate-light:#94A3B8;
     --bg:#F8FAFC; --white:#FFF; --amber:#D97706; --green:#15803D; --green-bg:#F0FDF4;
     --red:#FF3333; --border:#E5E7EB;
@@ -48,9 +48,9 @@
   .cover{background:linear-gradient(150deg,#0F172A 0%,#1E293B 55%,#1D3A8A 100%);color:#fff;display:flex}
   .cover .slide-inner{justify-content:center;align-items:flex-start}
   .cover .logo-big{height:44px;margin-bottom:48px;filter:brightness(0) invert(1)}
-  .cover .pre{font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:#93C5FD;font-weight:600;margin-bottom:16px}
+  .cover .pre{font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:#FDA4AF;font-weight:600;margin-bottom:16px}
   .cover h1{font-size:clamp(34px,4.6vw,58px);font-weight:900;letter-spacing:-.02em;line-height:1.1;max-width:900px}
-  .cover h1 em{font-style:normal;color:#60A5FA}
+  .cover h1 em{font-style:normal;color:#FB7185}
   .cover .meta-line{margin-top:36px;font-size:15px;color:#94A3B8}
   .cover .meta-line strong{color:#fff;font-weight:600}
 
@@ -103,24 +103,24 @@
   .bar-track{height:12px;background:var(--bg);border-radius:99px;position:relative;border:1px solid var(--border)}
   .pr-row.hl .bar-track{background:#fff}
   .bar-fill{position:absolute;top:0;bottom:0;border-radius:99px;background:#CBD5E1}
-  .pr-row.hl .bar-fill{background:linear-gradient(90deg,var(--blue),#60A5FA)}
+  .pr-row.hl .bar-fill{background:linear-gradient(90deg,var(--blue),#FB7185)}
   .pr-row .rng{font-weight:800;text-align:right;font-variant-numeric:tabular-nums}
   .pr-row.hl .rng{color:var(--blue)}
   .yourseg{display:inline-block;font-size:10px;font-weight:800;background:var(--blue);color:#fff;border-radius:99px;padding:2px 8px;margin-left:8px;vertical-align:2px}
 
   /* Slide 6 process (dark) */
   .darkslide{background:var(--navy);color:#fff}
-  .darkslide .kicker{color:#93C5FD}
+  .darkslide .kicker{color:#FDA4AF}
   .darkslide h1.slide-title{color:#fff}
   .darkslide p.slide-sub{color:#94A3B8}
   .timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:12px}
-  .tstep{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:13px;padding:22px 18px;position:relative}
-  .tstep .day{font-size:11.5px;font-weight:800;color:#60A5FA;letter-spacing:.06em;text-transform:uppercase}
-  .tstep h4{font-size:16px;font-weight:700;margin:8px 0 8px;color:#fff}
-  .tstep p{font-size:13px;color:#CBD5E1}
-  .tstep .n{position:absolute;top:-14px;left:18px;width:28px;height:28px;border-radius:99px;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;border:3px solid var(--navy)}
-  .total-line{margin-top:26px;text-align:center;font-size:15px;color:#94A3B8}
-  .total-line b{color:#fff;font-size:17px}
+  .tstep{background:#fff;border:1px solid var(--border);border-radius:13px;padding:22px 18px;position:relative;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .tstep .day{font-size:11.5px;font-weight:800;color:var(--blue);letter-spacing:.06em;text-transform:uppercase}
+  .tstep h4{font-size:16px;font-weight:700;margin:8px 0 8px}
+  .tstep p{font-size:13px;color:var(--slate)}
+  .tstep .n{position:absolute;top:-14px;left:18px;width:28px;height:28px;border-radius:99px;background:var(--blue);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;border:3px solid var(--bg)}
+  .total-line{margin-top:26px;text-align:center;font-size:15px;color:var(--slate)}
+  .total-line b{color:var(--navy);font-size:17px}
 
   /* Slide 7 lotting */
   .lot-wrap{display:grid;grid-template-columns:340px 1fr;gap:36px;height:100%;align-items:start}
@@ -436,8 +436,8 @@ function build(){
     </div>
     <div class="asof">Pricing sheet as of ${esc(d.pricing.asOf)} · actual results depend on documentation quality, seasoning and state mix</div>`);
 
-  /* 6 — Process (dark) */
-  slideEl('darkslide', `
+  /* 6 — Process */
+  slideEl('', `
     <div class="kicker">06 · The process</div>
     <h1 class="slide-title">From Handshake to Funding in ~14 Days</h1>
     <p class="slide-sub">You stay in control at every step — nothing is sold until you accept a bid.</p>
@@ -579,7 +579,7 @@ function drawMap(){
     const v=by[st]||0;
     const t=v/max;
     const isHome=st===home;
-    const fill=isHome?'#FF3333':(v===0?'#EDF1F7':`rgba(37,99,235,${0.15+0.85*t})`);
+    const fill=isHome?'#E11D48':(v===0?'#EDF1F7':`rgba(37,99,235,${0.15+0.85*t})`);
     const dark=isHome||t>0.45;
     const x=X0+col*(CELL+GAP), y=Y0+row*(CELL+GAP);
     out+=`<g><rect class="tile" x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="8" fill="${fill}" ${isHome?'stroke="#0F172A" stroke-width="2.5"':''}><title>${esc(STATE_NAMES[st]||st)}: ${v} buyers</title></rect>
