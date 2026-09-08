@@ -35,7 +35,7 @@ Output: a deployed deck at `deck/?client=<slug>` and a short reply in Slack.
 5. **Write the config** `deck/clients/<slug>.json` following `_template.json`
    (`demo.json` = complete example). Slug: lowercase company name, hyphens.
    Set `meta.generatedAt` (now, UTC) and `meta.manager` (the requesting manager;
-   default: Anastasia Pavlova, (302) 703-9387, a.pavlova@debexpert.com).
+   default: Henry Arora, "C: 872-347-2251 · O: 302-313-1788", h.arora@debexpert.com).
 6. **Validate**: JSON parses; every `challengeRef` exists; `client.state` is a
    valid 2-letter code; pricing has a `clientSegment: true` row.
 7. **Deploy**: commit and push to `main`. GitHub Pages redeploys in ~1 minute.
