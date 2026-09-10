@@ -154,7 +154,7 @@
   .ev.bid .ic{background:#EFF6FF}.ev.dl .ic{background:#FFFBEB}.ev.q .ic{background:#F0FDF4}
   .ev b{font-weight:700}
   .ev .tm{margin-left:auto;font-size:11px;color:var(--slate-light);flex:none}
-  #chat{padding:14px;display:flex;flex-direction:column;gap:10px;min-height:280px}
+  #chat{padding:14px;display:flex;flex-direction:column;gap:10px;height:340px;overflow-y:auto;scroll-behavior:smooth}
   .msg{max-width:85%;padding:10px 14px;border-radius:13px;font-size:13px;line-height:1.45}
   .msg.them{background:var(--bg);border:1px solid var(--border);border-bottom-left-radius:4px;align-self:flex-start}
   .msg.me{background:var(--blue);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
@@ -479,12 +479,7 @@ function build(){
     <p class="slide-sub">No black box: your seller dashboard shows every bid, every data-tape download, and a direct chat with your Debexpert manager.</p>
     <div class="trans-wrap grow">
       <div class="panel"><div class="phead"><span class="live-dot"></span> Auction activity — your portfolio</div><div id="feed"></div></div>
-      <div class="panel"><div class="phead">💬 Chat with your manager</div><div id="chat">
-        <div class="msg them"><div class="who">${esc(C.meta.manager.name)} · Debexpert</div>Buyer #171 asked for a payment-history breakdown by vintage. I've uploaded it to the data room — bids usually move after that.</div>
-        <div class="msg me"><div class="who">You</div>Great. Can we extend the auction by one day?</div>
-        <div class="msg them"><div class="who">${esc(C.meta.manager.name)} · Debexpert</div>Done — closing moved to Thursday 3pm CT. Two more buyers are reviewing the tape right now.</div>
-        <div class="typing"><i></i><i></i><i></i></div>
-      </div></div>
+      <div class="panel"><div class="phead">💬 Chat with your manager</div><div id="chat"></div></div>
     </div>`);
 
   /* 9 — Expectations / zero commission */
@@ -646,6 +641,63 @@ function initFeed(){
   };
   for(let i=0;i<5;i++)add();
   setInterval(add,3500);
+  initChat();
+}
+
+/* ---------- slide 8: live chat ---------- */
+function initChat(){
+  const mgr = C.meta.manager.name, first = mgr.split(' ')[0];
+  const SCRIPT = [
+    ['m',"Morning! Your portfolio is live. 14 buyers signed the NDA overnight."],
+    ['y',"Great. What are they asking so far?"],
+    ['m',"First question from Buyer #218 — what DMS system do you run?"],
+    ['y',"Wayne Reaves."],
+    ['m',"Perfect, they ingest Wayne Reaves exports directly. Could you send payment histories for the last 24 months?"],
+    ['y',"Uploading now, give me 10 minutes."],
+    ['m',"Got it — posted to the data room. Buyer #054 asks: are all titles in hand?"],
+    ['y',"Yes, all titles in our office. Liens released on the 12 paid-offs."],
+    ['m',"👍 First bid is in — Buyer #171 at $0.58/$."],
+    ['y',"A bit low, isn't it?"],
+    ['m',"It's an opening bid. Two more buyers are mid-review — I'd sit tight."],
+    ['m',"Buyer #390 asks — do the vehicles have GPS / starter-interrupt units?"],
+    ['y',"About 80% have GPS. VIN-level list is in the tape, column S."],
+    ['m',"Relayed. New bid — Buyer #054 at $0.63/$."],
+    ['m',"Please send charge-off detail on accounts 1140, 1163 and 1201 — Buyer #171 wants the recovery notes."],
+    ['y',"Done, just attached them to the data room."],
+    ['m',"Bid up — #171 now at $0.68/$. Auction closes tomorrow 3pm CT."],
+    ['y',"Can we extend by one day? I have a board meeting tomorrow."],
+    ['m',"Done — closing moved to Thursday 3pm CT. I'll ping you before the final hour."],
+    ['y',"Perfect, thanks " + first + "!"],
+    ['m',"Final stretch: #171 raised to $0.71/$ — two bidders still active 🔥"]
+  ];
+  const chat = $('#chat');
+  let i = 0, typingEl = null;
+  const scroll = () => { chat.scrollTop = chat.scrollHeight; };
+  const showTyping = side => {
+    typingEl = document.createElement('div');
+    typingEl.className = 'typing';
+    if(side === 'y') typingEl.style.alignSelf = 'flex-end';
+    typingEl.innerHTML = '<i></i><i></i><i></i>';
+    chat.appendChild(typingEl); scroll();
+  };
+  const step = () => {
+    if(i >= SCRIPT.length){
+      setTimeout(() => { chat.innerHTML = ''; i = 0; step(); }, 7000);
+      return;
+    }
+    const [side, text] = SCRIPT[i];
+    showTyping(side);
+    setTimeout(() => {
+      if(typingEl){ typingEl.remove(); typingEl = null; }
+      const el = document.createElement('div');
+      el.className = 'msg ' + (side === 'm' ? 'them' : 'me');
+      el.innerHTML = '<div class="who">' + (side === 'm' ? esc(mgr) + ' · Debexpert' : 'You') + '</div>' + esc(text);
+      chat.appendChild(el); scroll();
+      i++;
+      setTimeout(step, 700 + Math.min(1800, text.length * 18));
+    }, side === 'y' ? 900 : 1200);
+  };
+  step();
 }
 
 boot();
