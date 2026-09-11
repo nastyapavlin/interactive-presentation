@@ -22,13 +22,13 @@
 
   /* Deck frame */
   #deck{position:fixed;inset:0;bottom:56px;overflow:hidden}
-  .slide{position:absolute;inset:0;padding:56px 72px 40px;opacity:0;transform:translateX(60px);transition:opacity .45s ease,transform .45s ease;pointer-events:none;overflow:auto;background:var(--bg)}
+  .slide{position:absolute;inset:0;padding:44px 72px 32px;opacity:0;transform:translateX(60px);transition:opacity .45s ease,transform .45s ease;pointer-events:none;overflow:auto;background:var(--bg)}
   .slide.active{opacity:1;transform:none;pointer-events:auto}
   .slide.prev{transform:translateX(-60px)}
   .slide-inner{max-width:1180px;margin:0 auto;height:100%;display:flex;flex-direction:column}
   .kicker{text-transform:uppercase;font-size:13px;font-weight:700;color:var(--blue);letter-spacing:.09em;margin-bottom:10px}
   h1.slide-title{font-size:clamp(26px,3.4vw,42px);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:10px}
-  p.slide-sub{font-size:clamp(16px,1.5vw,19px);color:var(--slate);max-width:760px;margin-bottom:28px}
+  p.slide-sub{font-size:clamp(16px,1.5vw,19px);color:var(--slate);max-width:860px;margin-bottom:20px}
   .grow{flex:1;min-height:0}
   .asof{font-size:13px;color:var(--slate-light);margin-top:14px}
 
@@ -57,7 +57,7 @@
   /* Cards / generic grids */
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-  .pcard{background:#fff;border:1px solid var(--border);border-radius:13px;padding:20px 22px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .pcard{background:#fff;border:1px solid var(--border);border-radius:13px;padding:16px 18px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
   .pcard h4{font-size:17px;font-weight:700;margin-bottom:6px}
   .pcard p{font-size:15.5px;color:var(--slate)}
   .chal{border-left:4px solid var(--amber);}
@@ -65,7 +65,7 @@
   .sol{border-left:4px solid var(--navy)}
   .sol .tag{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
   .sol .ref{font-size:12px;color:var(--slate-light);margin-top:8px}
-  .insight{background:var(--blue-light);border:1px solid var(--blue-soft);border-radius:10px;padding:12px 16px;font-size:15px;color:var(--slate);margin-top:14px}
+  .insight{background:var(--blue-light);border:1px solid var(--blue-soft);border-radius:10px;padding:10px 16px;font-size:14.5px;color:var(--slate);margin-top:14px}
   .insight b{color:var(--navy)}
   .insight .src{color:var(--slate-light);font-size:11.5px}
 
@@ -94,8 +94,8 @@
   .state-big .sub b{color:var(--navy)}
 
   /* Slide 5 pricing */
-  .price-table{display:flex;flex-direction:column;gap:9px}
-  .pr-row{display:grid;grid-template-columns:220px 110px 1fr 120px;gap:14px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:15.5px}
+  .price-table{display:flex;flex-direction:column;gap:7px}
+  .pr-row{display:grid;grid-template-columns:220px 110px 1fr 120px;gap:14px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:10px;padding:8px 16px;font-size:15px}
   .pr-row.hl{border-color:var(--blue-soft);background:var(--blue-light)}
   .pr-row .ac{font-weight:700}
   .pr-row .perf{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--slate-light)}
@@ -369,10 +369,10 @@ function build(){
     <div class="kicker">01 · Our understanding of your business</div>
     <h1 class="slide-title">What We Know About ${esc(c.name)}</h1>
     <p class="slide-sub">Our read on your business — tell us where we're wrong.</p>
-    <div class="grid2" style="align-content:start">
+    <div class="grid4" style="align-content:start">
       ${c.profile.map(p=>`<div class="pcard"><h4>${esc(p.title)}</h4><p>${esc(p.detail)}</p></div>`).join('')}
     </div>
-    <div class="grid2" style="margin-top:18px">
+    <div class="grid4" style="margin-top:16px">
       ${c.challenges.map(ch=>`<div class="pcard chal"><span class="tag">Challenge</span><h4>${esc(ch.title)}</h4><p>${esc(ch.detail)}</p></div>`).join('')}
     </div>
     ${(c.industryInsights||[]).length?`<div class="insight">📊 <b>Industry context:</b> ${c.industryInsights.map(i=>esc(i.fact)+' <span class="src">('+esc(i.source)+')</span>').join(' · ')}</div>`:''}`);
