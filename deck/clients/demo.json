@@ -17,37 +17,37 @@
     "profile": [
       {
         "title": "Independent BHPH dealer",
-        "detail": "Two lots in the Dallas–Fort Worth metro, selling and financing ~70 vehicles a month."
+        "detail": "Two DFW lots, ~70 financed vehicles a month."
       },
       {
         "title": "In-house note portfolio",
-        "detail": "Roughly $4.2M in face value across ~610 active accounts, serviced by your own team."
+        "detail": "$4.2M face value, ~610 accounts, serviced in-house."
       },
       {
         "title": "Growing Texas market",
-        "detail": "DFW subprime auto demand keeps growing — inventory, not demand, is your constraint."
+        "detail": "Demand grows; inventory is the constraint."
       },
       {
         "title": "Rising cost of funds",
-        "detail": "Floorplan and credit-line rates remain elevated, squeezing margin on every financed unit."
+        "detail": "Elevated floorplan rates squeeze every unit."
       }
     ],
     "challenges": [
       {
         "title": "Cash is locked in slow-paying notes",
-        "detail": "Capital sits in 30–42 month notes while inventory opportunities pass by every week."
+        "detail": "Capital sits in 30–42 month notes."
       },
       {
         "title": "Delinquency is creeping up",
-        "detail": "Industry data shows subprime auto 60+ day delinquency near record highs — every month of holding adds charge-off risk."
+        "detail": "Subprime delinquency is near record highs."
       },
       {
         "title": "Collections overhead keeps growing",
-        "detail": "Skip tracing, repossessions and compliance eat into servicing margin on the tail of the portfolio."
+        "detail": "Skips and repos eat servicing margin."
       },
       {
         "title": "Single-buyer offers feel like lowballs",
-        "detail": "Direct offers from one local buyer give you no way to know the real market price of your paper."
+        "detail": "One local buyer can't show market price."
       }
     ],
     "industryInsights": [
@@ -71,22 +71,22 @@
     {
       "challengeRef": 0,
       "title": "Turn notes into cash in ~14 days",
-      "detail": "The average Debexpert auction closes and funds in about two weeks — capital goes back into cars on your lot."
+      "detail": "Average auction funds in about two weeks."
     },
     {
       "challengeRef": 1,
       "title": "Transfer the risk while prices are strong",
-      "detail": "Selling performing paper today locks in value before delinquency erodes it. Recourse and non-recourse structures available."
+      "detail": "Lock in value before delinquency erodes it."
     },
     {
       "challengeRef": 2,
       "title": "Sell the tail, keep the core",
-      "detail": "Auction skips, deficiencies and charge-offs so your team services only accounts that pay."
+      "detail": "Sell the tail; service only paying accounts."
     },
     {
       "challengeRef": 3,
       "title": "Let 500+ buyers set the price",
-      "detail": "A competitive auction replaces guesswork: verified buyers bid against each other, and you see every bid."
+      "detail": "Verified buyers bid openly — you see every bid."
     }
   ],
   "data": {

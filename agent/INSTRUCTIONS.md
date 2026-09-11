@@ -59,6 +59,8 @@ see `worker/README.md` for the one-time Cloudflare + Slack setup.
 ## Style rules
 
 - Deck language: English. Tone: confident, specific, no filler.
+- Keep every `detail` line SHORT — under ~8 words. The deck uses large type;
+  long sentences wrap and become unreadable on a projector.
 - Challenges must read as informed hypotheses about THIS client, not generic
   complaints.
 - Never invent platform statistics: buyer counts and prices only from snapshots.
