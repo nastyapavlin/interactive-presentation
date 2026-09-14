@@ -2,3 +2,4 @@ agent/.env
 __pycache__/
 *.pyc
 agent/.pbi_token.json
+agent/.questionnaire-geo.json

@@ -443,14 +443,14 @@ function build(){
   const top = Object.entries(d.buyers.byState).sort((a,b)=>b[1]-a[1]).slice(0,3).map(([s,n])=>`${s} (${n})`).join(', ');
   slideEl('', `
     <div class="kicker">04 · Buyers in your state</div>
-    <h1 class="slide-title">${d.buyers.approximate?'≈':''}${fmtN(stTotal)} Registered Buyers Can Bid on ${esc(STATE_NAMES[c.state]||c.state)} Paper</h1>
+    <h1 class="slide-title">${d.buyers.approximate?'≈':''}${fmtN(stTotal)} Confirmed Buyers Can Bid on ${esc(STATE_NAMES[c.state]||c.state)} Paper</h1>
     <p class="slide-sub">What matters is how many buyers compete for paper in <b>your</b> state.</p>
     <div class="map-wrap grow">
       <svg id="usmap" viewBox="0 0 620 420"></svg>
       <div class="state-big">
         <div class="num">${fmtN(stTotal)}</div>
-        <div class="lbl">registered platform buyers for ${esc(STATE_NAMES[c.state]||c.state)} portfolios — ${fmtN(stCount)} focused on ${esc(c.state)}${nw?` plus ${fmtN(nw)} buying nationwide`:''}</div>
-        <div class="sub">Top states: <b>${esc(top)}</b>. Nationwide buyers bid everywhere. Over <b>1,260</b> of the network are fully vetted, confirmed buyers.</div>
+        <div class="lbl">confirmed buyers for ${esc(STATE_NAMES[c.state]||c.state)} portfolios — ${fmtN(stCount)} name ${esc(c.state)} in their questionnaire${nw?` plus ${fmtN(nw)} buy nationwide`:''}</div>
+        <div class="sub">Top states: <b>${esc(top)}</b>. Geography comes from buyers' own onboarding questionnaires; buyers who haven't stated a geography aren't counted.</div>
       </div>
     </div>
     <div class="asof">Live platform data as of ${esc(d.buyers.asOf)} · ${esc(d.buyers.stateBasis||'platform buyers')}</div>`);
