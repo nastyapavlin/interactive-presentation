@@ -82,7 +82,7 @@
   .donut-center{font-weight:900}
 
   /* Slide 3 interest bars */
-  .int-list{display:flex;flex-direction:column;gap:8px}
+  .int-list{display:flex;flex-direction:column;gap:7px}
   .int-row{display:grid;grid-template-columns:300px 1fr 100px;gap:16px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:10px;padding:7px 16px;cursor:pointer;transition:border .15s}
   .int-row:hover{border-color:var(--slate-light)}
   .int-row.hl{background:var(--blue-light);border-color:var(--blue-soft)}
@@ -418,7 +418,7 @@ function build(){
         <span class="int-track"><span class="int-fill" style="width:${Math.round(x.count/maxI*100)}%"></span></span>
         <span class="int-cnt">${fmtN(x.count)}</span></div>`).join('')}
       </div>
-      <div id="buyer-note">👆 Click a row for details.</div>
+      <div id="buyer-note">🛡️ <b>Every buyer is vetted</b> — banks, credit unions, attorneys, collection agencies and funds pass thorough verification before access.</div>
     </div>
     <div class="asof">Buyers with stated purchase preferences · as of ${esc(d.buyers.asOf)} · source: ${esc(d.buyers.source||'platform')}</div>`);
   } else {
