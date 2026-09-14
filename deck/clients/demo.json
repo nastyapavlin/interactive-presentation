@@ -182,15 +182,15 @@
       }
     },
     "pricing": {
-      "asOf": "2026-08-28",
+      "asOf": "2026-09-14",
       "source": "Debexpert auctions sheet + market benchmarks",
       "rows": [
         {
           "assetClass": "Auto / BHPH notes",
           "performance": "Performing",
-          "low": 75,
-          "high": 85,
-          "auctions": 1,
+          "low": 35,
+          "high": 90,
+          "auctions": 48,
           "clientSegment": true
         },
         {
@@ -198,6 +198,13 @@
           "performance": "Performing",
           "low": 30,
           "high": 65,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Judgment portfolios",
+          "performance": "Legal",
+          "low": 10,
+          "high": 30,
           "clientSegment": false
         },
         {
@@ -222,17 +229,17 @@
           "clientSegment": true
         },
         {
-          "assetClass": "Judgment portfolios",
-          "performance": "Legal",
-          "low": 10,
-          "high": 30,
-          "clientSegment": false
-        },
-        {
           "assetClass": "Credit card charge-offs",
           "performance": "Non-performing",
           "low": 4,
           "high": 14,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Consumer installment charge-offs",
+          "performance": "Non-performing",
+          "low": 4,
+          "high": 12,
           "clientSegment": false
         },
         {

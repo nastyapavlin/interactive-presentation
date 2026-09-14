@@ -1,14 +1,14 @@
 {
-  "asOf": "2026-09-02",
+  "asOf": "2026-09-14",
   "source": "auctions sheet",
   "rows": [
     {
       "assetClass": "Auto / BHPH notes",
       "performance": "Performing",
-      "low": 75,
-      "high": 85,
-      "auctions": 1,
-      "clientSegment": false
+      "low": 35,
+      "high": 90,
+      "auctions": 48,
+      "clientSegment": true
     }
   ],
   "latestAuctionYear": 2026
