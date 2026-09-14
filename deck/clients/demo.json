@@ -188,9 +188,9 @@
         {
           "assetClass": "Auto / BHPH notes",
           "performance": "Performing",
-          "low": 35,
+          "low": 52,
           "high": 90,
-          "auctions": 48,
+          "auctions": 47,
           "clientSegment": true
         },
         {
