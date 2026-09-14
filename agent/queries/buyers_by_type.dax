@@ -1,9 +1,9 @@
-// Buyers grouped by platform classification ("Тип типов компании"),
-// only companies marked as Buyer. Dataset: "USA preferences Main_".
+// Platform network by institution type ("Тип типов компании"), whole network
+// (no Buyer filter — the CRM's Buyer flag is sparsely filled, while institution
+// types are set network-wide). Dataset: "USA preferences Main_".
 EVALUATE
 SUMMARIZECOLUMNS (
     'Инфа для карт'[Тип типов компании],
-    FILTER ( 'Инфа для карт', 'Инфа для карт'[Тип компании] = "Buyer" ),
     "Count", DISTINCTCOUNT ( 'Инфа для карт'[Id компании] )
 )
 ORDER BY [Count] DESC

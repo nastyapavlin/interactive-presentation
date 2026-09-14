@@ -23,21 +23,20 @@ DATASET_ID = "f95c5194-987d-4907-a3e9-a6789ea4ff45"  # USA preferences Main_
 
 # Platform classification -> deck group (label, note for the interactive legend)
 GROUPS = [
-    ("FinTechs", ["FinTechs"],
-     "Fintech lenders and investors active in consumer and specialty receivables."),
-    ("Debt buying funds", ["Certified Debt Buyer", "Associate Debt Buyer",
-                           "International Debt Buyer", "Junk Debt"],
-     "Certified and associate debt buyers purchasing performing and charged-off portfolios."),
+    ("Auto & specialty lenders", ["Auto Lenders", "Auto loans", "Commercial Equipment Lenders",
+                                  "Originating Creditor", "Consumer Lender", "Small Business Lender", "PDL"],
+     "Auto and specialty finance companies buying portfolios adjacent to their business."),
+    ("Credit unions", ["Credit Unions"],
+     "Regulated institutions acquiring seasoned performing paper."),
+    ("Investment & debt buying funds", ["Certified Debt Buyer", "Associate Debt Buyer",
+                                        "International Debt Buyer", "Junk Debt"],
+     "Certified and associate funds purchasing performing and charged-off portfolios."),
+    ("Banks", ["Banks"],
+     "Banking institutions active in loan and note acquisitions."),
     ("Collection agencies", ["Certified Collection Agency", "Associate Collection Agency"],
-     "Agencies buying paper they will work themselves — strong bidders on skips and deficiencies."),
-    ("Law firms", ["Certified Law Firm", "Associate Law Firm"],
+     "Agencies buying paper they will work themselves - strong bidders on skips and deficiencies."),
+    ("Attorneys & law firms", ["Certified Law Firm", "Associate Law Firm"],
      "Legal-network buyers focused on judgments and legal-stage accounts."),
-    ("Banks & credit unions", ["Banks", "Credit Unions"],
-     "Regulated institutions buying seasoned performing paper."),
-    ("Lenders & originators", ["Auto Lenders", "Auto loans", "Consumer Lender",
-                               "Small Business Lender", "Commercial Equipment Lenders",
-                               "PDL", "Originating Creditor"],
-     "Originating lenders acquiring portfolios adjacent to their core business."),
 ]
 OTHER_LABEL = "Other & unclassified"
 OTHER_NOTE = "Registered buyers pending classification, brokers, affiliates and partners."
@@ -101,7 +100,8 @@ def main() -> None:
     for r in type_rows:
         t = val(r, "Тип типов компании")
         raw[t if t else "no data"] = int(val(r, "Count") or 0)
-    total = sum(raw.values())
+    total_rows = run_dax(token, 'EVALUATE ROW("Count", CALCULATE(DISTINCTCOUNT(\'Инфа для карт\'[Id компании]), \'Инфа для карт\'[Тип компании] = "Buyer"))')
+    total = int(val(total_rows[0], "Count") or 0)
 
     by_type, used = [], set()
     for label, keys, note in GROUPS:
@@ -109,9 +109,6 @@ def main() -> None:
         used.update(keys)
         if cnt:
             by_type.append({"type": label, "count": cnt, "note": note})
-    other = sum(c for k, c in raw.items() if k not in used)
-    if other:
-        by_type.append({"type": OTHER_LABEL, "count": other, "note": OTHER_NOTE})
     by_type.sort(key=lambda x: (x["type"] == OTHER_LABEL, -x["count"]))  # Other last
 
     # Source data sometimes types state codes with Cyrillic lookalikes ("ОК")
@@ -129,7 +126,7 @@ def main() -> None:
             x["count"] = approx(x["count"])
         by_state = {k: approx(v) for k, v in by_state.items()}
         nationwide = approx(nationwide)
-        total = approx(sum(x["count"] for x in by_type))
+        total = approx(total)
 
     print(json.dumps({
         "asOf": date.today().isoformat(),

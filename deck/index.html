@@ -390,8 +390,8 @@ function build(){
   /* 3 — Buyer network */
   slideEl('', `
     <div class="kicker">03 · Who is on the other side</div>
-    <h1 class="slide-title">${d.buyers.approximate?'Over ':''}${fmtN(d.buyers.total)} Registered Buyers, ${['','One','Two','Three','Four','Five','Six','Seven','Eight'][d.buyers.byType.length]||d.buyers.byType.length} Distinct Groups</h1>
-    <p class="slide-sub">Different buyers want different paper. Click a group to learn more.</p>
+    <h1 class="slide-title">${d.buyers.approximate?'Over ':''}${fmtN(d.buyers.total)} Buyers — From Banks to Debt Funds</h1>
+    <p class="slide-sub">The institutional mix of the Debexpert network. Click a group to learn more.</p>
     <div class="buyers-wrap grow">
       <svg id="donut" viewBox="0 0 240 240"></svg>
       <div>
@@ -552,7 +552,7 @@ function drawDonut(){
     parts+=`<path d="M${p(a0,R)} A${R},${R} 0 ${large} 1 ${p(a1,R)} L${p(a1,r)} A${r},${r} 0 ${large} 0 ${p(a0,r)} Z" fill="${PALETTE[i%PALETTE.length]}" data-i="${i}" style="cursor:pointer;transition:opacity .15s"><title>${esc(x.type)}: ${x.count}</title></path>`;
     a0=a1;
   });
-  svg.innerHTML=parts+`<text class="donut-center" x="${cx}" y="${cy-4}" text-anchor="middle" font-size="34" fill="#0F172A">${fmtN(total)}</text><text x="${cx}" y="${cy+20}" text-anchor="middle" font-size="11" fill="#64748B" font-weight="600">REGISTERED BUYERS</text>`;
+  svg.innerHTML=parts+`<text class="donut-center" x="${cx}" y="${cy-4}" text-anchor="middle" font-size="34" fill="#0F172A">${fmtN(total)}</text><text x="${cx}" y="${cy+20}" text-anchor="middle" font-size="11" fill="#64748B" font-weight="600">INSTITUTIONS</text>`;
   const legend=$('#legend');
   legend.innerHTML=data.map((x,i)=>`<div class="lg-row" data-i="${i}"><span class="lg-dot" style="background:${PALETTE[i%PALETTE.length]}"></span><span class="t">${esc(x.type)}</span><span class="c">${fmtN(x.count)}</span></div>`).join('');
   const sel=i=>{
