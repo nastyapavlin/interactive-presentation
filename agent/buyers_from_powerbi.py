@@ -128,6 +128,33 @@ def main() -> None:
         nationwide = approx(nationwide)
         total = approx(total)
 
+    INTERESTS = [
+        ("consumer", "Consumer paper", "Consumer",
+         "Credit cards, installment, payday, POS and utility receivables."),
+        ("re", "Real estate notes", "Real Estate",
+         "Performing and non-performing 1st and 2nd lien notes, CFDs."),
+        ("commercial", "Commercial debt", "Commercial",
+         "B2B loans, equipment finance and merchant cash advances."),
+        ("auto", "Auto notes", "Auto",
+         "Performing auto, BHPH paper, deficiencies and skips."),
+        ("medical", "Medical receivables", "Medical",
+         "Hospital and provider receivables portfolios."),
+        ("student", "Student loans", "Student",
+         "Non-performing private student loan portfolios."),
+    ]
+    parts = ", ".join(
+        f'"{k}", CALCULATE(DISTINCTCOUNT(\'Company pref\'[Company ID]), '
+        f'FILTER(\'Company pref\', SEARCH("{term}", \'Company pref\'[Product name],1,0)>0), '
+        f'FILTER(\'Инфа для карт\', \'Инфа для карт\'[Тип компании]="Buyer"))'
+        for k, _, term, _ in INTERESTS)
+    irow = run_dax(token, "EVALUATE ROW(" + parts + ")")[0]
+    by_interest = [{"key": k, "type": label, "count": int(val(irow, k) or 0), "note": note}
+                   for k, label, _, note in INTERESTS]
+    by_interest.sort(key=lambda x: -x["count"])
+    if rounded:
+        for x in by_interest:
+            x["count"] = approx(x["count"])
+
     print(json.dumps({
         "asOf": date.today().isoformat(),
         "source": "Power BI · USA preferences Main_",
@@ -135,6 +162,7 @@ def main() -> None:
         "total": total,
         "nationwide": nationwide,
         "byType": by_type,
+        "byInterest": by_interest,
         "byState": by_state,
     }, indent=2, ensure_ascii=False))
 

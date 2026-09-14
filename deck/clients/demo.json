@@ -128,6 +128,44 @@
           "note": "Legal-network buyers focused on judgments and legal-stage accounts."
         }
       ],
+      "byInterest": [
+        {
+          "key": "consumer",
+          "type": "Consumer paper",
+          "count": 2200,
+          "note": "Credit cards, installment, payday, POS and utility receivables."
+        },
+        {
+          "key": "re",
+          "type": "Real estate notes",
+          "count": 2000,
+          "note": "Performing and non-performing 1st and 2nd lien notes, CFDs."
+        },
+        {
+          "key": "commercial",
+          "type": "Commercial debt",
+          "count": 2000,
+          "note": "B2B loans, equipment finance and merchant cash advances."
+        },
+        {
+          "key": "auto",
+          "type": "Auto notes",
+          "count": 1900,
+          "note": "Performing auto, BHPH paper, deficiencies and skips."
+        },
+        {
+          "key": "medical",
+          "type": "Medical receivables",
+          "count": 770,
+          "note": "Hospital and provider receivables portfolios."
+        },
+        {
+          "key": "student",
+          "type": "Student loans",
+          "count": 600,
+          "note": "Non-performing private student loan portfolios."
+        }
+      ],
       "byState": {
         "FL": 370,
         "TX": 330,
