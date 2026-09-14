@@ -78,19 +78,19 @@
   .lg-dot{width:13px;height:13px;border-radius:4px;flex:none}
   .lg-row .t{font-size:16px;font-weight:600;flex:1}
   .lg-row .c{font-size:16.5px;font-weight:800;font-variant-numeric:tabular-nums}
-  #buyer-note{font-size:15.5px;color:var(--slate);background:#fff;border:1px dashed var(--border);border-radius:10px;padding:12px 16px;margin-top:12px;min-height:58px}
+  #buyer-note{font-size:14.5px;color:var(--slate);background:#fff;border:1px dashed var(--border);border-radius:10px;padding:8px 14px;margin-top:8px}
   .donut-center{font-weight:900}
 
   /* Slide 3 interest bars */
-  .int-list{display:flex;flex-direction:column;gap:10px}
-  .int-row{display:grid;grid-template-columns:300px 1fr 110px;gap:16px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 18px;cursor:pointer;transition:border .15s}
+  .int-list{display:flex;flex-direction:column;gap:8px}
+  .int-row{display:grid;grid-template-columns:300px 1fr 100px;gap:16px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:10px;padding:7px 16px;cursor:pointer;transition:border .15s}
   .int-row:hover{border-color:var(--slate-light)}
   .int-row.hl{background:var(--blue-light);border-color:var(--blue-soft)}
-  .int-name{font-size:16.5px;font-weight:700}
+  .int-name{font-size:15.5px;font-weight:700}
   .int-track{height:14px;background:var(--bg);border:1px solid var(--border);border-radius:99px;position:relative}
   .int-fill{position:absolute;top:0;bottom:0;left:0;border-radius:99px;background:#CBD5E1}
   .int-row.hl .int-fill{background:linear-gradient(90deg,var(--blue),#FB7185)}
-  .int-cnt{font-size:18px;font-weight:800;text-align:right;font-variant-numeric:tabular-nums}
+  .int-cnt{font-size:16.5px;font-weight:800;text-align:right;font-variant-numeric:tabular-nums}
   .int-row.hl .int-cnt{color:var(--blue)}
 
   /* Slide 4 map */
@@ -409,9 +409,9 @@ function build(){
     const maxI = Math.max(...bi.map(x=>x.count));
     slideEl('', `
     <div class="kicker">03 · Who is on the other side</div>
-    <h1 class="slide-title">${d.buyers.approximate?'Over ':''}${fmtN(d.buyers.total)} Buyers — and What They Want</h1>
-    <p class="slide-sub">Registered buyers by the paper they ask for. Your segment is highlighted.</p>
-    <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:14px">
+    <h1 class="slide-title">${d.buyers.approximate?'Over ':''}${fmtN(d.buyers.total)} Confirmed Buyers — and What They Want</h1>
+    <p class="slide-sub">Validated platform buyers by the paper they ask for. Your segment is highlighted.</p>
+    <div class="grow" style="display:flex;flex-direction:column;justify-content:center;gap:8px;min-height:0">
       <div class="int-list">
       ${bi.map((x,i)=>`<div class="int-row ${x.key===segKey?'hl':''}" data-i="${i}">
         <span class="int-name">${esc(x.type)}${x.key===segKey?'<span class="yourseg">YOUR SEGMENT</span>':''}</span>

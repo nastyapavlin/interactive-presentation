@@ -92,9 +92,9 @@
   "data": {
     "buyers": {
       "asOf": "2026-09-14",
-      "source": "Power BI · USA preferences Main_",
+      "source": "Debexpert platform · confirmed clients",
       "approximate": true,
-      "total": 5900,
+      "total": 1260,
       "nationwide": 2600,
       "byType": [
         {
@@ -130,40 +130,52 @@
       ],
       "byInterest": [
         {
-          "key": "consumer",
-          "type": "Consumer paper",
-          "count": 2200,
-          "note": "Credit cards, installment, payday, POS and utility receivables."
+          "key": "re",
+          "type": "Residential real estate notes",
+          "count": 810,
+          "note": "Performing and non-performing residential notes and CFDs."
         },
         {
           "key": "re",
-          "type": "Real estate notes",
-          "count": 2000,
-          "note": "Performing and non-performing 1st and 2nd lien notes, CFDs."
+          "type": "Commercial real estate notes",
+          "count": 790,
+          "note": "Commercial mortgage notes across performance stages."
+        },
+        {
+          "key": "auto",
+          "type": "Performing auto & consumer",
+          "count": 580,
+          "note": "Performing auto notes and unsecured consumer paper — the BHPH sweet spot."
+        },
+        {
+          "key": "consumer",
+          "type": "Non-performing consumer",
+          "count": 510,
+          "note": "Charged-off installment, cards and payday portfolios."
+        },
+        {
+          "key": "judgments",
+          "type": "Judgements",
+          "count": 510,
+          "note": "Court judgments bought by legal-network investors."
         },
         {
           "key": "commercial",
           "type": "Commercial debt",
-          "count": 2000,
-          "note": "B2B loans, equipment finance and merchant cash advances."
+          "count": 500,
+          "note": "B2B loans, MCA and equipment finance receivables."
         },
         {
           "key": "auto",
-          "type": "Auto notes",
-          "count": 1900,
-          "note": "Performing auto, BHPH paper, deficiencies and skips."
+          "type": "Non-performing auto",
+          "count": 470,
+          "note": "Auto deficiencies, skips and charge-offs."
         },
         {
           "key": "medical",
-          "type": "Medical receivables",
-          "count": 770,
+          "type": "Medical",
+          "count": 440,
           "note": "Hospital and provider receivables portfolios."
-        },
-        {
-          "key": "student",
-          "type": "Student loans",
-          "count": 600,
-          "note": "Non-performing private student loan portfolios."
         }
       ],
       "byState": {
