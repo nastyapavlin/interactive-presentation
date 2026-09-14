@@ -1,12 +1,17 @@
-// Buyers per state of interest, resolved to 2-letter postal codes via the
-// state key table. "Nationwide" and regional buckets come back with blank
-// postal — the script folds "Nationwide" into its own count.
+// Platform-REGISTERED buyers per state of interest (companies with a
+// wa_gen_client_id — i.e. actually on the platform — and the Buyer flag),
+// resolved to 2-letter postal codes. "Nationwide" comes back with blank
+// postal — the script folds it into its own count.
 // Dataset: "USA preferences Main_".
 EVALUATE
 SUMMARIZECOLUMNS (
     'Ключ к картам'[postal],
     'Ключ к картам'[name],
-    FILTER ( 'Инфа для карт', 'Инфа для карт'[Тип компании] = "Buyer" ),
+    FILTER (
+        'Инфа для карт',
+        NOT ISBLANK ( 'Инфа для карт'[wa_gen_client_id] )
+            && 'Инфа для карт'[Тип компании] = "Buyer"
+    ),
     "Count", DISTINCTCOUNT ( 'Инфа для карт'[Id компании] )
 )
 ORDER BY [Count] DESC
