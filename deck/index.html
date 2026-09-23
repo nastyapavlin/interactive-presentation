@@ -494,10 +494,12 @@ function build(){
       <div class="controls">
         <div class="ctl"><label>Portfolio face value <output id="o-face"></output></label>
           <input type="range" id="r-face" min="500000" max="20000000" step="100000" value="${pf.faceValue||4000000}"></div>
-        <div class="ctl"><label>Number of accounts <output id="o-acc"></output></label>
-          <input type="range" id="r-acc" min="50" max="5000" step="10" value="${pf.accounts||600}"></div>
         <div class="ctl"><label>Performing share <output id="o-perf"></output></label>
           <input type="range" id="r-perf" min="0" max="100" step="1" value="${Math.round((pf.performingShare??0.7)*100)}"></div>
+        <div class="ctl auto-only" hidden><label>Average APR <output id="o-apr"></output></label>
+          <input type="range" id="r-apr" min="5" max="35" step="1" value="${pf.avgApr||22}"></div>
+        <div class="ctl auto-only" hidden><label>Average LTV <output id="o-ltv"></output></label>
+          <input type="range" id="r-ltv" min="50" max="150" step="5" value="${pf.avgLtv||110}"></div>
         <div class="hint">Estimates use current market ranges from the pricing slide. Not a formal valuation.</div>
       </div>
       <div>
@@ -628,30 +630,41 @@ function initLotting(){
   const perfR=pr.find(r=>r.clientSegment&&/perform/i.test(r.performance)&&!/non/i.test(r.performance))||{low:40,high:80};
   const npRows=pr.filter(r=>r.clientSegment&&/non/i.test(r.performance));
   const npR=npRows.length?{low:Math.min(...npRows.map(r=>r.low)),high:Math.max(...npRows.map(r=>r.high))}:{low:5,high:20};
-  const els={face:$('#r-face'),acc:$('#r-acc'),perf:$('#r-perf')};
+  const isAuto=/auto/i.test((perfR.assetClass||'')+(C.client.segment||''));
+  if(isAuto)document.querySelectorAll('.auto-only').forEach(el=>el.hidden=false);
+  const els={face:$('#r-face'),perf:$('#r-perf'),apr:$('#r-apr'),ltv:$('#r-ltv')};
+  const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
   const render=()=>{
-    const face=+els.face.value, acc=+els.acc.value, share=+els.perf.value/100;
+    const face=+els.face.value, share=+els.perf.value/100;
+    const apr=+els.apr.value, ltv=+els.ltv.value;
     $('#o-face').textContent=fmtM(face);
-    $('#o-acc').textContent=fmtN(acc);
     $('#o-perf').textContent=Math.round(share*100)+'%';
+    $('#o-apr').textContent=apr+'%';
+    $('#o-ltv').textContent=ltv+'%';
+    let pR=perfR;
+    if(isAuto){
+      const band=perfR.high-perfR.low;
+      const pos=clamp(0.5+(apr-22)*0.015+(110-ltv)*0.003,0.12,0.88);
+      pR={low:Math.round(perfR.low+band*clamp(pos-0.2,0,1)),high:Math.round(perfR.low+band*clamp(pos+0.2,0,1))};
+    }
     const pFace=face*share, npFace=face-pFace;
     const lots=[];
     if(pFace>0){
       if(pFace>3e6){
-        lots.push({np:false,name:'Pool 1 — Performing (tranche A)',face:pFace/2,acc:Math.round(acc*share/2),r:perfR,d:'Two tranches let smaller funds compete.'});
-        lots.push({np:false,name:'Pool 2 — Performing (tranche B)',face:pFace/2,acc:Math.round(acc*share/2),r:perfR,d:'Buyers bid on either or both.'});
+        lots.push({np:false,name:'Pool 1 — Performing (tranche A)',face:pFace/2,r:pR,d:'Two tranches let smaller funds compete.'});
+        lots.push({np:false,name:'Pool 2 — Performing (tranche B)',face:pFace/2,r:pR,d:'Buyers bid on either or both.'});
       }else{
-        lots.push({np:false,name:'Pool 1 — Performing accounts',face:pFace,acc:Math.round(acc*share),r:perfR,d:'The premium, paying slice of your book.'});
+        lots.push({np:false,name:'Pool 1 — Performing accounts',face:pFace,r:pR,d:'The premium, paying slice of your book.'});
       }
     }
     if(npFace>50000){
-      lots.push({np:true,name:'Pool '+(lots.length+1)+' — Skips, deficiencies & charge-offs',face:npFace,acc:acc-Math.round(acc*share),r:npR,d:'Agencies and legal buyers pay for written-off paper.'});
+      lots.push({np:true,name:'Pool '+(lots.length+1)+' — Skips, deficiencies & charge-offs',face:npFace,r:npR,d:'Agencies and legal buyers pay for written-off paper.'});
     }
-    $('#lots').innerHTML=lots.map(l=>`<div class="lot ${l.np?'np':''}"><h4>${esc(l.name)}</h4><span class="money">${fmtM(l.face*l.r.low/100)} – ${fmtM(l.face*l.r.high/100)}</span><div class="d">${fmtM(l.face)} face · ~${fmtN(l.acc)} accounts · market ${l.r.low}–${l.r.high}¢/$ — ${esc(l.d)}</div></div>`).join('')||'<div class="hint">Move the sliders to model the portfolio.</div>';
+    $('#lots').innerHTML=lots.map(l=>`<div class="lot ${l.np?'np':''}"><h4>${esc(l.name)}</h4><span class="money">${fmtM(l.face*l.r.low/100)} – ${fmtM(l.face*l.r.high/100)}</span><div class="d">${fmtM(l.face)} face · market ${l.r.low}–${l.r.high}¢/$ — ${esc(l.d)}</div></div>`).join('')||'<div class="hint">Move the sliders to model the portfolio.</div>';
     const lo=lots.reduce((s,l)=>s+l.face*l.r.low/100,0), hi=lots.reduce((s,l)=>s+l.face*l.r.high/100,0);
     $('#tot').textContent=fmtM(lo)+' – '+fmtM(hi);
   };
-  Object.values(els).forEach(e=>e.addEventListener('input',render));
+  Object.values(els).forEach(e=>e&&e.addEventListener('input',render));
   render();
 }
 
