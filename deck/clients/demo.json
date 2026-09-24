@@ -237,6 +237,15 @@
     "pricing": {
       "asOf": "2026-09-24",
       "source": "Debexpert auctions sheet + market benchmarks",
+      "model": {
+        "base": 76.41,
+        "aprCoef": 0.1297,
+        "ltvCoef": -0.0269,
+        "spread": 7.9,
+        "aprMean": 24,
+        "ltvMean": 222,
+        "n": 44
+      },
       "rows": [
         {
           "assetClass": "Auto / BHPH notes",
@@ -254,45 +263,10 @@
           "clientSegment": false
         },
         {
-          "assetClass": "Judgment portfolios",
-          "performance": "Legal",
-          "low": 10,
-          "high": 30,
-          "clientSegment": false
-        },
-        {
-          "assetClass": "MCA receivables",
-          "performance": "Non-performing",
-          "low": 8,
-          "high": 25,
-          "clientSegment": false
-        },
-        {
-          "assetClass": "Auto skip accounts",
-          "performance": "Non-performing",
-          "low": 5,
-          "high": 20,
-          "clientSegment": true
-        },
-        {
-          "assetClass": "Auto deficiency claims",
-          "performance": "Non-performing",
-          "low": 5,
-          "high": 15,
-          "clientSegment": true
-        },
-        {
           "assetClass": "Credit card charge-offs",
           "performance": "Non-performing",
           "low": 4,
           "high": 14,
-          "clientSegment": false
-        },
-        {
-          "assetClass": "Consumer installment charge-offs",
-          "performance": "Non-performing",
-          "low": 4,
-          "high": 12,
           "clientSegment": false
         },
         {
@@ -301,17 +275,40 @@
           "low": 3,
           "high": 12,
           "clientSegment": false
+        },
+        {
+          "assetClass": "MCA receivables",
+          "performance": "Non-Performing",
+          "low": 1,
+          "high": 11,
+          "auctions": 1,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Judgment portfolios",
+          "performance": "Non-Performing",
+          "low": 1,
+          "high": 7,
+          "auctions": 2,
+          "clientSegment": false
+        },
+        {
+          "assetClass": "Auto / BHPH notes",
+          "performance": "Non-Performing",
+          "low": 1,
+          "high": 5,
+          "auctions": 4,
+          "clientSegment": true
+        },
+        {
+          "assetClass": "Consumer installment",
+          "performance": "Non-Performing",
+          "low": 3,
+          "high": 4,
+          "auctions": 3,
+          "clientSegment": false
         }
-      ],
-      "model": {
-        "base": 76.41,
-        "aprCoef": 0.1297,
-        "ltvCoef": -0.0269,
-        "spread": 7.9,
-        "aprMean": 24,
-        "ltvMean": 222,
-        "n": 44
-      }
+      ]
     }
   }
 }

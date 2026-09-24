@@ -9,6 +9,38 @@
       "high": 90,
       "auctions": 47,
       "clientSegment": true
+    },
+    {
+      "assetClass": "MCA receivables",
+      "performance": "Non-Performing",
+      "low": 1,
+      "high": 11,
+      "auctions": 1,
+      "clientSegment": false
+    },
+    {
+      "assetClass": "Judgment portfolios",
+      "performance": "Non-Performing",
+      "low": 1,
+      "high": 7,
+      "auctions": 2,
+      "clientSegment": false
+    },
+    {
+      "assetClass": "Auto / BHPH notes",
+      "performance": "Non-Performing",
+      "low": 1,
+      "high": 5,
+      "auctions": 4,
+      "clientSegment": true
+    },
+    {
+      "assetClass": "Consumer installment",
+      "performance": "Non-Performing",
+      "low": 3,
+      "high": 4,
+      "auctions": 3,
+      "clientSegment": false
     }
   ],
   "model": {

@@ -31,6 +31,7 @@ DEBT_TYPE_LABELS = {
     "mca": "MCA receivables",
     "credit card": "Credit card charge-offs",
     "judgment": "Judgment portfolios",
+    "judgement": "Judgment portfolios",
     "payday": "Payday loans",
     "real estate": "Real estate loans",
     "solar": "Solar loans",
@@ -75,7 +76,7 @@ def main() -> None:
     for (asset, perf), offers in groups.items():
         low, high = min(offers), max(offers)
         if len(offers) < MIN_ROWS:
-            low, high = max(0, low - PAD), min(100, high + PAD)
+            low, high = max(1, low - PAD), min(100, high + PAD)
         out.append({
             "assetClass": asset,
             "performance": perf,
