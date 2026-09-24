@@ -235,7 +235,7 @@
       "geoRespondents": 310
     },
     "pricing": {
-      "asOf": "2026-09-14",
+      "asOf": "2026-09-24",
       "source": "Debexpert auctions sheet + market benchmarks",
       "rows": [
         {
@@ -302,7 +302,16 @@
           "high": 12,
           "clientSegment": false
         }
-      ]
+      ],
+      "model": {
+        "base": 76.41,
+        "aprCoef": 0.1297,
+        "ltvCoef": -0.0269,
+        "spread": 7.9,
+        "aprMean": 24,
+        "ltvMean": 222,
+        "n": 44
+      }
     }
   }
 }

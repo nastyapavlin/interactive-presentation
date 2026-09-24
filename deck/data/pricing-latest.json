@@ -1,5 +1,5 @@
 {
-  "asOf": "2026-09-14",
+  "asOf": "2026-09-24",
   "source": "auctions sheet",
   "rows": [
     {
@@ -11,5 +11,14 @@
       "clientSegment": true
     }
   ],
+  "model": {
+    "base": 76.41,
+    "aprCoef": 0.1297,
+    "ltvCoef": -0.0269,
+    "spread": 7.9,
+    "aprMean": 24,
+    "ltvMean": 222,
+    "n": 44
+  },
   "latestAuctionYear": 2026
 }

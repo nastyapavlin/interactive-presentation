@@ -86,7 +86,36 @@ def main() -> None:
         })
     out.sort(key=lambda r: -r["high"])
 
+    # Fit offer ~ APR + LTV on the client-segment performing rows when the
+    # sheet carries AVG APR/LTV columns (calibrates the deck's pooling sliders).
+    fit_rows = []
+    for r in rows:
+        try:
+            if segment and segment in label_for(r.get("Debt Type","")).lower() and "non" not in r.get("Performing/Non-performing","").lower():
+                fit_rows.append((float(str(r["Offer (%)"]).replace("%","").strip()),
+                                 float(str(r["AVG APR (%)"]).replace("%","").strip()),
+                                 float(str(r["AVG LTV (%)"]).replace("%","").strip())))
+        except (ValueError, KeyError, TypeError):
+            continue
+    model = None
+    if len(fit_rows) >= 8:
+        import statistics
+        ys=[x[0] for x in fit_rows]; aprs=[x[1] for x in fit_rows]; ltvs=[x[2] for x in fit_rows]
+        ma,ml,my=statistics.mean(aprs),statistics.mean(ltvs),statistics.mean(ys)
+        saa=sum((a-ma)**2 for a in aprs); sll=sum((l-ml)**2 for l in ltvs)
+        sal=sum((a-ma)*(l-ml) for a,l in zip(aprs,ltvs))
+        say=sum((a-ma)*(y-my) for a,y in zip(aprs,ys))
+        sly=sum((l-ml)*(y-my) for l,y in zip(ltvs,ys))
+        det=saa*sll-sal*sal
+        if det:
+            b1=(say*sll-sly*sal)/det; b2=(sly*saa-say*sal)/det; b0=my-b1*ma-b2*ml
+            resid=[y-(b0+b1*a+b2*l) for y,a,l in fit_rows]
+            model={"base":round(b0,2),"aprCoef":round(b1,4),"ltvCoef":round(b2,4),
+                   "spread":round(statistics.pstdev(resid),1),
+                   "aprMean":round(ma),"ltvMean":round(ml),"n":len(fit_rows)}
     result = {"asOf": date.today().isoformat(), "source": "auctions sheet", "rows": out}
+    if model:
+        result["model"] = model
     if latest_year:
         result["latestAuctionYear"] = latest_year
     if dropped_stale:

@@ -634,6 +634,11 @@ function initLotting(){
   if(isAuto)document.querySelectorAll('.auto-only').forEach(el=>el.hidden=false);
   const els={face:$('#r-face'),perf:$('#r-perf'),apr:$('#r-apr'),ltv:$('#r-ltv')};
   const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
+  const model=C.data.pricing.model;
+  if(isAuto&&model){
+    els.apr.min=15;els.apr.max=35;els.apr.value=model.aprMean;
+    els.ltv.min=100;els.ltv.max=350;els.ltv.step=5;els.ltv.value=model.ltvMean;
+  }
   const render=()=>{
     const face=+els.face.value, share=+els.perf.value/100;
     const apr=+els.apr.value, ltv=+els.ltv.value;
@@ -642,7 +647,10 @@ function initLotting(){
     $('#o-apr').textContent=apr+'%';
     $('#o-ltv').textContent=ltv+'%';
     let pR=perfR;
-    if(isAuto){
+    if(isAuto&&model){
+      const mid=model.base+model.aprCoef*apr+model.ltvCoef*ltv;
+      pR={low:Math.round(clamp(mid-model.spread,perfR.low,perfR.high)),high:Math.round(clamp(mid+model.spread,perfR.low,perfR.high))};
+    }else if(isAuto){
       const band=perfR.high-perfR.low;
       const pos=clamp(0.5+(apr-22)*0.015+(110-ltv)*0.003,0.12,0.88);
       pR={low:Math.round(perfR.low+band*clamp(pos-0.2,0,1)),high:Math.round(perfR.low+band*clamp(pos+0.2,0,1))};
