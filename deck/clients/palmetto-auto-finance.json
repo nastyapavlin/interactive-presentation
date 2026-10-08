@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-02T15:30:00Z",
+    "generatedAt": "2026-10-08T12:00:00Z",
     "manager": {
       "name": "Henry Arora",
       "phone": "C: 872-347-2251 · O: 302-313-1788",
@@ -17,46 +17,46 @@
     "profile": [
       {
         "title": "South Carolina BHPH dealer",
-        "detail": "Independent Buy Here Pay Here operator serving deep-subprime and subprime buyers in South Carolina's used-car market."
+        "detail": "Independent Buy Here Pay Here lot."
       },
       {
         "title": "In-house note book",
-        "detail": "You originate and service your own auto notes - payments, collections and repossessions all run through your back office."
+        "detail": "You originate and service every note."
       },
       {
         "title": "Collections carry the whole model",
-        "detail": "With most buyers deep-subprime, cash flow depends on the speed and consistency of collections, not on the sale itself."
+        "detail": "Deep-subprime buyers — cash flow is collections."
       },
       {
-        "title": "Long-duration, capital-heavy paper",
-        "detail": "Each financed vehicle ties up capital for years while payments trickle back weekly or biweekly."
+        "title": "Long, capital-heavy paper",
+        "detail": "Capital tied up for years in weekly notes."
       }
     ],
     "challenges": [
       {
         "title": "Slow collections are starving cash flow",
-        "detail": "A manual, thin-staffed back office means every extra day-to-collect delays the cash you need to restock - and slow accounts quietly slide toward charge-off."
+        "detail": "Every lost day-to-collect delays restocking."
       },
       {
         "title": "Repossession and charge-off exposure is high",
-        "detail": "BHPH paper is far likelier to sit delinquent or in active repossession than franchise-lender loans - the tail of the book keeps growing and eating margin."
+        "detail": "A growing delinquent tail eats margin."
       },
       {
-        "title": "Bank credit is getting tighter and pricier",
-        "detail": "After recent high-profile BHPH failures, lenders repriced the segment - floor-plan and credit-line costs are up and advance rates are down."
+        "title": "Bank credit is tighter and pricier",
+        "detail": "Recent BHPH failures repriced the segment."
       },
       {
-        "title": "No market check on South Carolina paper",
-        "detail": "One-off offers from a single local buyer give you no way to know the true market price of your book."
+        "title": "No market check on your paper",
+        "detail": "One local buyer can't show true price."
       }
     ],
     "industryInsights": [
       {
-        "fact": "BHPH loans run roughly 10% delinquent versus about 3.8% for traditional auto lenders, and are far likelier to be in active repossession.",
+        "fact": "BHPH paper runs about 2.65× the 30+ day delinquency of traditional auto lenders, with roughly 5% of balances in active repossession.",
         "source": "Federal Reserve FEDS Notes, Buy Here Pay Here study, May 2026"
       },
       {
-        "fact": "Subprime 60+ day auto delinquency hit an all-time high of about 6.65% at the end of 2025.",
+        "fact": "Subprime 60+ day auto delinquency hit a record near 6.7% in late 2025.",
         "source": "Fitch Ratings, Auto ABS index"
       },
       {
@@ -75,22 +75,22 @@
     {
       "challengeRef": 0,
       "title": "Sell the slow tail, keep the payers",
-      "detail": "Auction skips, deficiencies and charge-offs to agencies and legal buyers - your team stops chasing paper that no longer pays and works only accounts that do."
+      "detail": "Auction skips and charge-offs; stop chasing them."
     },
     {
       "challengeRef": 1,
       "title": "Transfer risk while prices hold",
-      "detail": "Sell performing paper before delinquency erodes it - recourse and non-recourse structures available."
+      "detail": "Recourse or non-recourse — your choice."
     },
     {
       "challengeRef": 2,
       "title": "Liquidity without new debt",
-      "detail": "A portfolio sale is not a loan: no covenants, no interest, $0 seller fees, and it funds in about 14 days - years of trickle payments become inventory capital now."
+      "detail": "A sale, not a loan — funds in ~14 days."
     },
     {
       "challengeRef": 3,
       "title": "Let the market set the price",
-      "detail": "130 South Carolina-focused buyers plus 2,600 nationwide bidders compete in an open auction - you see every bid."
+      "detail": "130 SC plus 2,600 nationwide buyers bid openly."
     }
   ],
   "data": {
